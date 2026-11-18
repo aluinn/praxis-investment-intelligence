@@ -4,10 +4,10 @@
 
 **From insight to action. A research workspace for digital-asset investors: portfolio, live news, saved research and a decision journal in one place.**
 
-[![CI](https://github.com/aluinn/nexus-crypto-app-/actions/workflows/ci.yml/badge.svg)](https://github.com/aluinn/nexus-crypto-app-/actions/workflows/ci.yml)
-[![CodeQL](https://github.com/aluinn/nexus-crypto-app-/actions/workflows/codeql.yml/badge.svg)](https://github.com/aluinn/nexus-crypto-app-/actions/workflows/codeql.yml)
+[![CI](https://github.com/aluinn/praxis-investment-intelligence/actions/workflows/ci.yml/badge.svg)](https://github.com/aluinn/praxis-investment-intelligence/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/aluinn/praxis-investment-intelligence/actions/workflows/codeql.yml/badge.svg)](https://github.com/aluinn/praxis-investment-intelligence/actions/workflows/codeql.yml)
 [![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/aluinn/nexus-crypto-app-?style=flat)](https://github.com/aluinn/nexus-crypto-app-/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/aluinn/praxis-investment-intelligence?style=flat)](https://github.com/aluinn/praxis-investment-intelligence/stargazers)
 
 <!-- HERO: replace this screenshot with a screen recording (GIF or MP4) of the app when you have one. -->
 <img src="docs/assets/praxis-landing-hero.png" alt="Praxis landing page: 'From insight to action.' with a portfolio screenshot" width="860">
@@ -67,8 +67,8 @@ flowchart LR
 Requires Node.js 20.9 or newer. No API keys or environment variables.
 
 ```bash
-git clone https://github.com/aluinn/nexus-crypto-app-.git
-cd nexus-crypto-app-
+git clone https://github.com/aluinn/praxis-investment-intelligence.git
+cd praxis-investment-intelligence
 npm install
 npm run dev
 ```

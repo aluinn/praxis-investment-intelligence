@@ -4,7 +4,7 @@ title: "Praxis Investment Intelligence"
 type: software
 authors:
   - name: "Aluinn McDonald"
-repository-code: "https://github.com/aluinn/nexus-crypto-app-"
+repository-code: "https://github.com/aluinn/praxis-investment-intelligence"
 license: MIT
 abstract: "A research workspace for digital-asset investors: portfolio tracking, live news, saved research, a decision journal and an events calendar."
 keywords:

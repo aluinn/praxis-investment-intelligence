@@ -13,8 +13,8 @@ Thanks for helping. Praxis is a small Next.js app, so a first contribution is us
 Requires Node.js 20.9 or newer (Node 22.18 or newer to run the unit tests and benchmark, which execute TypeScript directly).
 
 ```bash
-git clone https://github.com/aluinn/nexus-crypto-app-.git
-cd nexus-crypto-app-
+git clone https://github.com/aluinn/praxis-investment-intelligence.git
+cd praxis-investment-intelligence
 npm install
 npm run dev
 ```

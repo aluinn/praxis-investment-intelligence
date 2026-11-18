@@ -5,13 +5,13 @@
   "description": "Praxis Investment Intelligence: a research workspace for digital-asset investors with portfolio tracking, live news, saved research, a decision journal and an events calendar.",
   "license": "MIT",
   "author": "Aluinn McDonald",
-  "homepage": "https://github.com/aluinn/nexus-crypto-app-#readme",
+  "homepage": "https://github.com/aluinn/praxis-investment-intelligence#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/aluinn/nexus-crypto-app-.git"
+    "url": "git+https://github.com/aluinn/praxis-investment-intelligence.git"
   },
   "bugs": {
-    "url": "https://github.com/aluinn/nexus-crypto-app-/issues"
+    "url": "https://github.com/aluinn/praxis-investment-intelligence/issues"
   },
   "engines": {
     "node": ">=20.9.0"
