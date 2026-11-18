@@ -1,12 +1,30 @@
 {
-  "name": "nexus",
+  "name": "praxis",
   "version": "0.1.0",
   "private": true,
+  "description": "Praxis Investment Intelligence: a research workspace for digital-asset investors with portfolio tracking, live news, saved research, a decision journal and an events calendar.",
+  "license": "MIT",
+  "author": "Aluinn McDonald",
+  "homepage": "https://github.com/aluinn/nexus-crypto-app-#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aluinn/nexus-crypto-app-.git"
+  },
+  "bugs": {
+    "url": "https://github.com/aluinn/nexus-crypto-app-/issues"
+  },
+  "engines": {
+    "node": ">=20.9.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typecheck": "next typegen && tsc --noEmit",
+    "test": "node --test \"tests/unit/*.test.ts\"",
+    "test:e2e": "node scripts/e2e-smoke.mjs",
+    "bench": "node scripts/bench.ts"
   },
   "dependencies": {
     "framer-motion": "^14.0.0",
