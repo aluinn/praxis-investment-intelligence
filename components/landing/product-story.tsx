@@ -15,7 +15,7 @@ const CHAPTERS = [
     src: "/assets/nexus/nexus-for-you.png",
     width: 2110,
     height: 1192,
-    alt: "Nexus For You page with asset filters and news cards from CoinDesk and CryptoSlate.",
+    alt: "Praxis For You page with asset filters and news cards from CoinDesk and CryptoSlate.",
   },
   {
     id: "portfolio",
@@ -25,7 +25,7 @@ const CHAPTERS = [
     src: "/assets/nexus/nexus-portfolio.png",
     width: 2050,
     height: 1148,
-    alt: "Nexus portfolio page with total value, allocation doughnut, and an add-asset control.",
+    alt: "Praxis portfolio page with total value, allocation doughnut, and an add-asset control.",
   },
   {
     id: "journal",
@@ -35,7 +35,7 @@ const CHAPTERS = [
     src: "/assets/nexus/nexus-journal.png",
     width: 2088,
     height: 1190,
-    alt: "Nexus trade journal with buy, sell, and note entries for LINK, BTC, and ETH.",
+    alt: "Praxis trade journal with buy, sell, and note entries for LINK, BTC, and ETH.",
   },
   {
     id: "saved",
@@ -45,7 +45,7 @@ const CHAPTERS = [
     src: "/assets/nexus/nexus-saved.png",
     width: 2134,
     height: 1188,
-    alt: "Nexus saved articles page with search and stories from Cointelegraph and Decrypt.",
+    alt: "Praxis saved articles page with search and stories from Cointelegraph and Decrypt.",
   },
   {
     id: "events",
@@ -55,7 +55,7 @@ const CHAPTERS = [
     src: "/assets/nexus/nexus-events.png",
     width: 2110,
     height: 1192,
-    alt: "Nexus events calendar with category filters and upcoming entries like a token unlock and a governance vote.",
+    alt: "Praxis events calendar with category filters and upcoming entries like a token unlock and a governance vote.",
   },
 ] as const;
 
@@ -124,7 +124,7 @@ export function ProductStory() {
           <div className="space-y-16">
             {CHAPTERS.map((chapter) => (
               <article key={chapter.id} className="space-y-5">
-                <p className="text-xs font-medium tracking-[0.2em] text-[#a78bfa]">{chapter.kicker}</p>
+                <p className="text-xs font-medium tracking-[0.2em] text-[#8b97b8]">{chapter.kicker}</p>
                 <h3 className="text-3xl font-semibold tracking-tight">{chapter.heading}</h3>
                 <p className="text-base leading-7 text-muted">{chapter.body}</p>
                 <Shot chapter={chapter} />
@@ -136,7 +136,7 @@ export function ProductStory() {
             <div className="space-y-16 lg:hidden">
               {CHAPTERS.map((chapter) => (
                 <Reveal key={chapter.id} as="article" className="space-y-5">
-                  <p className="text-xs font-medium tracking-[0.2em] text-[#a78bfa]">{chapter.kicker}</p>
+                  <p className="text-xs font-medium tracking-[0.2em] text-[#8b97b8]">{chapter.kicker}</p>
                   <h3 className="text-3xl font-semibold tracking-tight">{chapter.heading}</h3>
                   <p className="text-base leading-7 text-muted">{chapter.body}</p>
                   <Shot chapter={chapter} />
@@ -161,7 +161,7 @@ export function ProductStory() {
                   <div className="relative min-h-[260px] overflow-hidden">
                     {CHAPTERS.map((chapter, index) => (
                       <motion.div key={chapter.id} className="absolute inset-0" style={{ y: styles[index].y }}>
-                        <p className="text-xs font-medium tracking-[0.2em] text-[#a78bfa]">{chapter.kicker}</p>
+                        <p className="text-xs font-medium tracking-[0.2em] text-[#8b97b8]">{chapter.kicker}</p>
                         <h3 className="mt-3 text-4xl font-semibold tracking-tight">{chapter.heading}</h3>
                         <p className="mt-4 max-w-md text-base leading-7 text-muted">{chapter.body}</p>
                       </motion.div>

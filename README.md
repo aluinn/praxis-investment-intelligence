@@ -1,8 +1,10 @@
-# Nexus — Crypto Intelligence
+# Praxis Investment Intelligence
 
-Nexus is an investment workspace for digital-asset investors. It combines a portfolio view, live crypto headlines, saved research, and a personal trade journal.
+*From Insight to Action.* Praxis is the Ancient Greek word for action or practice: the application of knowledge through informed action.
 
-Information in Nexus is for organisation and reference. It is not financial advice, and it does not place trades.
+Praxis Investment Intelligence brings together financial information, research, portfolio analytics and investment journaling to support informed decisions. This edition focuses on digital-asset investors. It combines a portfolio view, live crypto headlines, saved research, and a personal trade journal.
+
+Information in Praxis is for organisation and reference. It is not financial advice, and it does not place trades.
 
 ## Run it locally
 
@@ -38,7 +40,7 @@ A failed source is dropped. The others are still returned. Titles and excerpts a
 
 If every feed fails, the route returns local fallback stories and the page says **Showing cached stories**.
 
-Excerpts are the feed text. Nexus does not write summaries and does not fetch article pages.
+Excerpts are the feed text. Praxis does not write summaries and does not fetch article pages.
 
 ## How live pricing works
 
@@ -66,6 +68,8 @@ These keys live in `localStorage` and are validated on read. A broken value fall
 | `nexus.saved.v1` | Saved articles and collections |
 | `nexus.notifications.dismissed.v1` | Dismissed demonstration notices |
 
+Storage keys keep their original `nexus.*` prefix from before the rebrand so existing saved data is preserved.
+
 The opening animation flag is `sessionStorage` key `nexus-intro-complete`.
 
 Saved articles keep the normalised story, so they remain after the live feed refreshes.
@@ -89,4 +93,4 @@ To swap providers, implement `getPrices(symbols, currency)` and use that class f
 - News is headlines and short excerpts, not full articles.
 - Notifications are demonstrations. There is no background alert service.
 - Portfolio history for 1Y and ALL covers up to 300 daily candles.
-- Nexus does not connect to wallets or exchanges and cannot place orders.
+- Praxis does not connect to wallets or exchanges and cannot place orders.

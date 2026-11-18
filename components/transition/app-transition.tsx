@@ -66,13 +66,13 @@ export function AppTransitionProvider({ children }: { children: React.ReactNode 
             transition={{ duration: COVER_MS / 1000, ease: EASE }}
           >
             <motion.p
-              className="text-xs font-medium tracking-[0.3em] text-[#a78bfa] sm:text-sm"
+              className="text-xs font-medium tracking-[0.3em] text-[#8b97b8] sm:text-sm"
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
               transition={{ duration: 0.3, ease: EASE }}
             >
-              CRYPTO INTELLIGENCE
+              FROM INSIGHT TO ACTION
             </motion.p>
           </motion.div>
         ) : null}

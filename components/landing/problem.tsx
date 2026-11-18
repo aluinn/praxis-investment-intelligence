@@ -47,7 +47,7 @@ export function Problem() {
           ))}
         </div>
         <p className="mt-10 max-w-2xl text-lg leading-8 text-foreground">
-          Nexus brings holdings, the stories around them, saved research, and the reasoning behind each decision into one workspace.
+          Praxis brings holdings, the stories around them, saved research, and the reasoning behind each decision into one workspace.
         </p>
       </div>
     </section>

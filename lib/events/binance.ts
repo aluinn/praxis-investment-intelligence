@@ -23,7 +23,7 @@ async function fetchCatalog(catalogId: number): Promise<Article[]> {
   const response = await fetch(url, {
     cache: "no-store",
     signal: AbortSignal.timeout(EVENTS_FETCH_TIMEOUT_MS),
-    headers: { Accept: "application/json", "User-Agent": "Nexus/1.0 (events reader)" },
+    headers: { Accept: "application/json", "User-Agent": "Praxis/1.0 (events reader)" },
   });
   if (!response.ok) throw new Error("http");
   const payload = (await response.json()) as {

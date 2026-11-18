@@ -3,7 +3,7 @@ import { NotificationsView } from "@/components/notifications/notifications-view
 
 export const metadata: Metadata = {
   title: "Notifications",
-  description: "Demonstration notices for Nexus. These are not live price alerts.",
+  description: "Demonstration notices for Praxis. These are not live price alerts.",
 };
 
 export default function NotificationsPage() {

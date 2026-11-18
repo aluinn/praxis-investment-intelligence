@@ -12,7 +12,7 @@ export function FinalCta() {
       <div className="relative mx-auto max-w-3xl text-center">
         <motion.div
           aria-hidden
-          className="pointer-events-none absolute left-1/2 top-1/2 h-48 w-[min(520px,90vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(130,92,237,0.2),transparent_70%)]"
+          className="pointer-events-none absolute left-1/2 top-1/2 h-48 w-[min(520px,90vw)] -translate-x-1/2 -translate-y-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(91,111,214,0.2),transparent_70%)]"
           animate={reduce ? undefined : { scale: [1, 1.12, 1], opacity: [0.9, 1, 0.9] }}
           transition={reduce ? undefined : { duration: 5, repeat: Infinity, ease: "easeInOut" }}
         />
@@ -36,7 +36,7 @@ export function FinalCta() {
             href="/app/for-you"
             className="relative mt-8 inline-flex min-h-11 items-center rounded-full bg-primary px-6 text-sm font-medium text-white hover:bg-primary-bright"
           >
-            Open Nexus
+            Open Praxis
           </TransitionLink>
         </motion.div>
       </div>

@@ -26,7 +26,7 @@ const FILTERS = [
 const TYPE_STYLE: Record<JournalType, string> = {
   buy: "text-positive",
   sell: "text-negative",
-  note: "text-[#c4b5fd]",
+  note: "text-[#c3cbe0]",
   idea: "text-warning",
 };
 
@@ -98,7 +98,7 @@ export function JournalView() {
             onClick={() => setFilter(item.id)}
             className={cn(
               "min-h-10 shrink-0 rounded-full px-4 text-sm",
-              filter === item.id ? "bg-[#2a2148] text-foreground" : "bg-[#141824] text-muted",
+              filter === item.id ? "bg-[#1d2540] text-foreground" : "bg-[#141824] text-muted",
             )}
           >
             {item.label}

@@ -13,13 +13,27 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+const DESCRIPTION =
+  "Praxis is an investment intelligence platform bringing together market insights, portfolio analytics and research to support informed investment decisions.";
+
 export const metadata: Metadata = {
+  applicationName: "Praxis",
   title: {
-    default: "Nexus — Crypto Intelligence",
-    template: "%s · Nexus",
+    default: "Praxis Investment Intelligence",
+    template: "%s · Praxis",
   },
-  description:
-    "Track a digital-asset portfolio, follow crypto news, save research, and keep an investment journal in one workspace.",
+  description: DESCRIPTION,
+  openGraph: {
+    type: "website",
+    siteName: "Praxis",
+    title: "Praxis Investment Intelligence",
+    description: DESCRIPTION,
+  },
+  twitter: {
+    card: "summary",
+    title: "Praxis Investment Intelligence",
+    description: DESCRIPTION,
+  },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {

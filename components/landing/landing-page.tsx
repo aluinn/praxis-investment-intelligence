@@ -178,7 +178,7 @@ export function LandingPage() {
           <FinalCta />
         </main>
         <footer className="border-t border-white/10 px-4 py-8 text-center text-xs leading-5 text-muted sm:px-6">
-          Nexus organises market information and personal notes for informational purposes only. It is not financial advice and it does not place trades.
+          Praxis organises market information and personal notes for informational purposes only. It is not financial advice and it does not place trades.
         </footer>
       </motion.div>
     </>

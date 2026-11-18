@@ -46,7 +46,7 @@ export function NavLinks({
               <motion.span
                 layoutId={`nav-active-bg-${scope}`}
                 aria-hidden
-                className="absolute inset-0 -z-10 rounded-xl bg-[#1a1732] shadow-[0_0_24px_rgba(130,92,237,0.16)]"
+                className="absolute inset-0 -z-10 rounded-xl bg-[#1a1732] shadow-[0_0_24px_rgba(91,111,214,0.16)]"
                 transition={{ duration: 0.3, ease: EASE }}
               />
             ) : null}

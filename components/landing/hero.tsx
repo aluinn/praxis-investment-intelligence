@@ -49,14 +49,14 @@ export function Hero() {
     >
       <motion.div
         aria-hidden
-        className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[min(900px,90vw)] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(130,92,237,0.16),transparent_68%)]"
+        className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[min(900px,90vw)] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(91,111,214,0.16),transparent_68%)]"
         style={reduce ? undefined : { scale: glowScale, opacity: glowOpacity }}
       />
       <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
         <motion.div style={reduce ? undefined : { y: textY, opacity: textOpacity }}>
-          <p className="text-xs font-medium tracking-[0.22em] text-[#a78bfa]">CRYPTO INTELLIGENCE</p>
+          <p className="text-xs font-medium tracking-[0.22em] text-[#8b97b8]">FROM INSIGHT TO ACTION</p>
           <h1 className="mt-4 max-w-xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl sm:leading-[1.05]">
-            Your investments, connected.
+            From insight to action.
           </h1>
           <p className="mt-5 max-w-lg text-base leading-7 text-muted sm:text-lg">
             Track your portfolio, follow the stories shaping your assets, and record every investment decision in one intelligent workspace.
@@ -66,7 +66,7 @@ export function Hero() {
               href="/app/for-you"
               className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-white hover:bg-primary-bright"
             >
-              Open Nexus
+              Open Praxis
             </TransitionLink>
             <a
               href="#features"
@@ -93,12 +93,12 @@ export function Hero() {
           >
             <div
               aria-hidden
-              className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-[radial-gradient(ellipse_at_center,rgba(130,92,237,0.22),transparent_70%)]"
+              className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-[radial-gradient(ellipse_at_center,rgba(91,111,214,0.22),transparent_70%)]"
             />
             <BrowserFrame>
               <Image
                 src="/assets/nexus/nexus-portfolio.png"
-                alt="Nexus portfolio screen with a pound total, daily change, allocation chart, and holdings for ETH, SOL, and BTC."
+                alt="Praxis portfolio screen with a pound total, daily change, allocation chart, and holdings for ETH, SOL, and BTC."
                 width={2050}
                 height={1148}
                 priority

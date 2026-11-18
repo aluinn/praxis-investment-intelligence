@@ -80,7 +80,7 @@ async function fetchSource(source: FeedSource): Promise<{ status: NewsSourceStat
       redirect: "follow",
       headers: {
         Accept: "application/rss+xml, application/xml, text/xml, */*",
-        "User-Agent": "Nexus/1.0 (news reader; excerpts only)",
+        "User-Agent": "Praxis/1.0 (news reader; excerpts only)",
       },
     });
     if (!response.ok) {

@@ -27,7 +27,7 @@ async function readJson(url: string) {
   const response = await fetch(url, {
     cache: "no-store",
     signal: AbortSignal.timeout(TIMEOUT_MS),
-    headers: { Accept: "application/json", "User-Agent": "Nexus/1.0" },
+    headers: { Accept: "application/json", "User-Agent": "Praxis/1.0" },
   });
   if (!response.ok) throw new Error(String(response.status));
   return response.json();

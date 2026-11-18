@@ -196,7 +196,7 @@ export function PortfolioView() {
       </div>
 
       <div className="relative mt-5 flex flex-wrap gap-2">
-        <button type="button" className="min-h-10 rounded-full bg-[#2a2148] px-4 text-sm text-[#d5c7ff]" aria-current="true">
+        <button type="button" className="min-h-10 rounded-full bg-[#1d2540] px-4 text-sm text-[#dde3f1]" aria-current="true">
           My Portfolio
         </button>
         <button
@@ -222,7 +222,7 @@ export function PortfolioView() {
         </AnimatePresence>
       </div>
 
-      <section className="mt-4 rounded-2xl border border-[#3c2f72] bg-panel p-5 shadow-[0_0_40px_rgba(130,92,237,0.12)]">
+      <section className="mt-4 rounded-2xl border border-[#3c2f72] bg-panel p-5 shadow-[0_0_40px_rgba(91,111,214,0.12)]">
         <div className="flex items-start justify-between gap-3">
           <p className="text-sm text-muted">{rows.length === 0 ? "Total Value" : `Total Value (${label})`}</p>
           <button
@@ -424,7 +424,7 @@ export function PortfolioView() {
           </p>
           <p>Live means the latest figure came from that feed. Cached means the last successful figure is being reused. Demo means a fallback number, never a live quote.</p>
           <p>Prices refresh about once a minute while this page is visible, and pause when the tab is hidden.</p>
-          <p>Nexus does not connect an exchange account and cannot place trades.</p>
+          <p>Praxis does not connect an exchange account and cannot place trades.</p>
         </div>
       </Dialog>
     </div>

@@ -175,7 +175,7 @@ export function AddHoldingDialog({
           </div>
           <label className="mt-5 block text-sm">
             <span className="text-muted">Amount Paid ({currency})</span>
-            <span className="mt-2 flex min-h-12 items-center gap-2 rounded-xl border border-[#6d4fd4] bg-input px-3">
+            <span className="mt-2 flex min-h-12 items-center gap-2 rounded-xl border border-[#4c5ec0] bg-input px-3">
               <span aria-hidden>{currencySymbol}</span>
               <input
                 value={paid}

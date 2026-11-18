@@ -4,6 +4,7 @@ import { Menu, X } from "lucide-react";
 import { useEffect, useState } from "react";
 import { TransitionLink } from "@/components/transition/transition-link";
 import { cn } from "@/lib/cn";
+import { PraxisWordmark } from "@/components/ui/logo";
 
 const LINKS = [
   { href: "#product", label: "Product" },
@@ -41,7 +42,7 @@ export function LandingNav() {
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
         <a href="#product" className="flex items-center rounded-lg">
-          <span className="text-sm font-semibold tracking-[0.16em] text-[#c4b5fd]">NEXUS</span>
+          <PraxisWordmark compact />
         </a>
         <nav aria-label="Page" className="hidden items-center gap-7 md:flex">
           {LINKS.map((link) => (
@@ -55,7 +56,7 @@ export function LandingNav() {
             href="/app/for-you"
             className="inline-flex min-h-11 items-center rounded-full bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
           >
-            Open Nexus
+            Open Praxis
           </TransitionLink>
           <button
             type="button"

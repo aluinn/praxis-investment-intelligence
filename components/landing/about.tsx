@@ -15,13 +15,13 @@ export function About() {
         </div>
         <div className="space-y-4 text-sm leading-7 text-muted">
           <p>
-            Nexus is an investment intelligence platform for digital-asset investors. It gathers portfolio tracking, market news, saved research, and a personal journal.
+            Praxis is an investment intelligence platform for digital-asset investors. It gathers portfolio tracking, market news, saved research, and a personal journal.
           </p>
           <p>
             Prices come from public market data when a GBP quote is available. News excerpts come from publisher RSS feeds and always link back to the original story.
           </p>
           <p>
-            Information in Nexus is for organisation and reference. It is not financial advice, and Nexus does not connect to an exchange account or place trades.
+            Information in Praxis is for organisation and reference. It is not financial advice, and Praxis does not connect to an exchange account or place trades.
           </p>
         </div>
       </Reveal>

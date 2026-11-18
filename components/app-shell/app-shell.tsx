@@ -6,7 +6,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { NavLinks } from "@/components/app-shell/nav-links";
-import { NexusWordmark } from "@/components/ui/logo";
+import { PraxisWordmark } from "@/components/ui/logo";
 import { EASE } from "@/lib/motion";
 
 export function AppShell({ children }: { children: React.ReactNode }) {
@@ -32,14 +32,14 @@ export function AppShell({ children }: { children: React.ReactNode }) {
     <div className="min-h-dvh bg-background">
       <aside className="fixed inset-y-0 left-0 z-30 hidden w-[240px] flex-col border-r border-white/10 bg-background px-4 py-5 lg:flex">
         <Link href="/" className="mb-8 rounded-xl px-1">
-          <NexusWordmark />
+          <PraxisWordmark />
         </Link>
         <NavLinks />
       </aside>
 
       <header className="sticky top-0 z-30 flex items-center justify-between border-b border-white/10 bg-background/95 px-4 py-3 lg:hidden">
-        <Link href="/" aria-label="Nexus home">
-          <NexusWordmark compact />
+        <Link href="/" aria-label="Praxis home">
+          <PraxisWordmark compact />
         </Link>
         <button
           type="button"
@@ -61,7 +61,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             className="absolute inset-y-0 left-0 flex w-[min(100%,320px)] flex-col bg-background px-4 py-5 shadow-2xl"
           >
             <div className="mb-8 flex items-center justify-between">
-              <NexusWordmark />
+              <PraxisWordmark />
               <button
                 type="button"
                 className="grid size-11 place-items-center rounded-xl border border-white/10"
@@ -90,7 +90,7 @@ export function AppShell({ children }: { children: React.ReactNode }) {
             </motion.div>
           </AnimatePresence>
           <p className="mt-10 text-xs leading-5 text-muted">
-            Nexus organises market information and personal notes. It is not financial advice and it does not place trades.
+            Praxis organises market information and personal notes. It is not financial advice and it does not place trades.
           </p>
         </div>
       </div>
