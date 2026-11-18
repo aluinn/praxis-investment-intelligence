@@ -158,7 +158,7 @@ export function AddHoldingDialog({
                     setError("");
                   }}
                   className={cn(
-                    "grid aspect-square place-items-center rounded-full text-[11px] font-semibold",
+                    "grid aspect-square place-items-center rounded-sm text-[11px] font-semibold",
                     selected ? "ring-2 ring-offset-2 ring-offset-[#0c101c]" : "",
                   )}
                   style={{

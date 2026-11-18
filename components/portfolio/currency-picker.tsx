@@ -40,11 +40,11 @@ export function CurrencyPicker({
               }}
               className={cn(
                 "flex min-h-14 w-full items-center justify-between rounded-xl border px-4 text-left",
-                active ? "border-primary/70 bg-[#1a1732]" : "border-white/10 hover:bg-white/5",
+                active ? "border-primary/70 bg-[#161b2c]" : "border-white/10 hover:bg-white/5",
               )}
             >
               <span className="flex items-center gap-3">
-                <span className="grid size-9 shrink-0 place-items-center rounded-full bg-white/5 text-sm font-semibold text-foreground">
+                <span className="grid size-9 shrink-0 place-items-center rounded-sm bg-white/5 text-sm font-semibold text-foreground">
                   {info.symbol}
                 </span>
                 <span>

@@ -1,54 +1,30 @@
-"use client";
-
-import { motion, useReducedMotion } from "framer-motion";
-import { EASE } from "@/lib/motion";
-
 const PROBLEMS = [
-  {
-    title: "Scattered holdings",
-    body: "Holdings are spread across exchanges and wallets.",
-  },
-  {
-    title: "Inconsistent performance",
-    body: "Portfolio performance is tracked inconsistently.",
-  },
-  {
-    title: "Split reasoning",
-    body: "Market news and personal investment reasoning are disconnected.",
-  },
-  {
-    title: "Too many tabs",
-    body: "Too many open news tabs create noise rather than clarity.",
-  },
+  ["Scattered holdings", "Positions sit across exchanges and wallets."],
+  ["Inconsistent performance", "Returns are tracked differently in every place."],
+  ["Split reasoning", "The news you read and the reasons you act live apart."],
+  ["Too many tabs", "Open feeds add noise, not clarity."],
 ];
 
 export function Problem() {
-  const reduce = useReducedMotion();
   return (
     <section className="px-4 py-20 sm:px-6 lg:py-28" aria-labelledby="problem-heading">
-      <div className="mx-auto max-w-6xl">
-        <p className="text-xs font-medium tracking-[0.22em] text-muted">THE GAP</p>
-        <h2 id="problem-heading" className="mt-3 max-w-2xl text-3xl font-semibold tracking-tight sm:text-4xl">
-          The picture of a portfolio is usually incomplete.
+      <div className="mx-auto grid max-w-6xl gap-10 border-t border-white/10 pt-10 lg:grid-cols-[1fr_1.4fr]">
+        <h2 id="problem-heading" className="font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
+          A portfolio is more than its prices.
         </h2>
-        <div className="mt-10 grid gap-4 sm:grid-cols-2">
-          {PROBLEMS.map((problem, index) => (
-            <motion.article
-              key={problem.title}
-              initial={reduce ? false : { opacity: 0, y: 12 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.55, delay: reduce ? 0 : index * 0.06, ease: EASE }}
-              className="rounded-2xl border border-white/10 bg-panel p-5"
-            >
-              <h3 className="text-base font-medium text-foreground">{problem.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted">{problem.body}</p>
-            </motion.article>
-          ))}
+        <div>
+          <ul className="divide-y divide-white/10 border-b border-white/10">
+            {PROBLEMS.map(([title, body]) => (
+              <li key={title} className="grid gap-1 py-4 sm:grid-cols-[14rem_1fr] sm:gap-6">
+                <h3 className="text-sm font-medium text-foreground">{title}</h3>
+                <p className="text-sm leading-6 text-muted">{body}</p>
+              </li>
+            ))}
+          </ul>
+          <p className="mt-8 max-w-lg text-base leading-7 text-foreground">
+            Praxis keeps holdings, the stories around them, saved research and the reasoning behind each decision together.
+          </p>
         </div>
-        <p className="mt-10 max-w-2xl text-lg leading-8 text-foreground">
-          Praxis brings holdings, the stories around them, saved research, and the reasoning behind each decision into one workspace.
-        </p>
       </div>
     </section>
   );

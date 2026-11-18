@@ -124,8 +124,8 @@ export function ProductStory() {
           <div className="space-y-16">
             {CHAPTERS.map((chapter) => (
               <article key={chapter.id} className="space-y-5">
-                <p className="text-xs font-medium tracking-[0.2em] text-[#8b97b8]">{chapter.kicker}</p>
-                <h3 className="text-3xl font-semibold tracking-tight">{chapter.heading}</h3>
+                <p className="font-mono text-xs uppercase tracking-wider text-[#8b97b8]">{chapter.kicker}</p>
+                <h3 className="font-serif text-3xl leading-tight tracking-tight">{chapter.heading}</h3>
                 <p className="text-base leading-7 text-muted">{chapter.body}</p>
                 <Shot chapter={chapter} />
               </article>
@@ -136,8 +136,8 @@ export function ProductStory() {
             <div className="space-y-16 lg:hidden">
               {CHAPTERS.map((chapter) => (
                 <Reveal key={chapter.id} as="article" className="space-y-5">
-                  <p className="text-xs font-medium tracking-[0.2em] text-[#8b97b8]">{chapter.kicker}</p>
-                  <h3 className="text-3xl font-semibold tracking-tight">{chapter.heading}</h3>
+                  <p className="font-mono text-xs uppercase tracking-wider text-[#8b97b8]">{chapter.kicker}</p>
+                  <h3 className="font-serif text-3xl leading-tight tracking-tight">{chapter.heading}</h3>
                   <p className="text-base leading-7 text-muted">{chapter.body}</p>
                   <Shot chapter={chapter} />
                 </Reveal>
@@ -147,7 +147,7 @@ export function ProductStory() {
             <div ref={trackRef} className="hidden lg:grid lg:grid-cols-2 lg:gap-16">
               <div className="relative">
                 <div className="sticky top-1/2 -translate-y-1/2">
-                  <div className="relative aspect-[2110/1192] overflow-hidden rounded-2xl">
+                  <div className="relative aspect-[2110/1192] overflow-hidden ">
                     {CHAPTERS.map((chapter, index) => (
                       <motion.div key={chapter.id} className="absolute inset-0" style={{ y: styles[index].y }}>
                         <Shot chapter={chapter} />
@@ -161,8 +161,8 @@ export function ProductStory() {
                   <div className="relative min-h-[260px] overflow-hidden">
                     {CHAPTERS.map((chapter, index) => (
                       <motion.div key={chapter.id} className="absolute inset-0" style={{ y: styles[index].y }}>
-                        <p className="text-xs font-medium tracking-[0.2em] text-[#8b97b8]">{chapter.kicker}</p>
-                        <h3 className="mt-3 text-4xl font-semibold tracking-tight">{chapter.heading}</h3>
+                        <p className="font-mono text-xs uppercase tracking-wider text-[#8b97b8]">{chapter.kicker}</p>
+                        <h3 className="mt-3 font-serif text-4xl leading-tight tracking-tight">{chapter.heading}</h3>
                         <p className="mt-4 max-w-md text-base leading-7 text-muted">{chapter.body}</p>
                       </motion.div>
                     ))}

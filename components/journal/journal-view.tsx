@@ -81,7 +81,7 @@ export function JournalView() {
             setEditing(null);
             setOpen(true);
           }}
-          className="inline-flex min-h-11 items-center gap-1 rounded-full bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
+          className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
         >
           <Plus className="size-4" />
           New Entry
@@ -97,7 +97,7 @@ export function JournalView() {
             aria-selected={filter === item.id}
             onClick={() => setFilter(item.id)}
             className={cn(
-              "min-h-10 shrink-0 rounded-full px-4 text-sm",
+              "min-h-10 shrink-0 rounded-sm px-4 text-sm",
               filter === item.id ? "bg-[#1d2540] text-foreground" : "bg-[#141824] text-muted",
             )}
           >
@@ -138,10 +138,10 @@ export function JournalView() {
                   <p className="flex flex-wrap items-center gap-2 text-sm">
                     {entry.asset ? (
                       <span
-                        className="rounded-full px-2 py-0.5 text-xs font-semibold"
+                        className="rounded-sm px-2 py-0.5 text-xs font-semibold"
                         style={{
                           color: assetStyle?.text ?? "#e7edf3",
-                          background: assetStyle?.bg ?? "#1a1732",
+                          background: assetStyle?.bg ?? "#161b2c",
                         }}
                       >
                         {entry.asset}
@@ -157,7 +157,7 @@ export function JournalView() {
                 <div className="mt-3 flex items-center justify-between gap-2">
                   <ul className="flex flex-wrap gap-2" aria-label="Tags">
                     {entry.tags.map((tag) => (
-                      <li key={tag} className="rounded-full bg-white/5 px-2 py-1 text-xs text-muted">
+                      <li key={tag} className="rounded-sm bg-white/5 px-2 py-1 text-xs text-muted">
                         {tag}
                       </li>
                     ))}

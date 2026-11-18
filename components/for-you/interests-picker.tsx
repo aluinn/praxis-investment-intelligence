@@ -77,7 +77,7 @@ export function InterestsPicker({
               }}
             >
               <span
-                className="grid size-9 place-items-center rounded-full text-[11px] font-semibold"
+                className="grid size-9 place-items-center rounded-sm text-[11px] font-semibold"
                 style={{ color: asset.color, background: `${asset.color}22` }}
               >
                 {asset.symbol.slice(0, 4)}

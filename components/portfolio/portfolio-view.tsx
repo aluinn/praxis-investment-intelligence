@@ -179,7 +179,7 @@ export function PortfolioView() {
           <button
             type="button"
             onClick={() => setCurrencyPickerOpen(true)}
-            className="min-h-11 rounded-full border border-white/10 px-3 text-sm font-medium text-muted hover:text-foreground"
+            className="min-h-11 rounded-sm border border-white/10 px-3 text-sm font-medium text-muted hover:text-foreground"
             aria-label="Change display currency"
           >
             {currency}
@@ -187,7 +187,7 @@ export function PortfolioView() {
           <button
             type="button"
             onClick={() => setSettingsOpen(true)}
-            className="grid size-11 place-items-center rounded-full border border-white/10 text-muted hover:text-foreground"
+            className="grid size-11 place-items-center rounded-sm border border-white/10 text-muted hover:text-foreground"
             aria-label="Portfolio details"
           >
             <Settings className="size-4" />
@@ -196,12 +196,12 @@ export function PortfolioView() {
       </div>
 
       <div className="relative mt-5 flex flex-wrap gap-2">
-        <button type="button" className="min-h-10 rounded-full bg-[#1d2540] px-4 text-sm text-[#dde3f1]" aria-current="true">
+        <button type="button" className="min-h-10 rounded-sm bg-[#1d2540] px-4 text-sm text-[#dde3f1]" aria-current="true">
           My Portfolio
         </button>
         <button
           type="button"
-          className="min-h-10 rounded-full border border-white/10 px-4 text-sm text-muted"
+          className="min-h-10 rounded-sm border border-white/10 px-4 text-sm text-muted"
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((open) => !open)}
         >
@@ -222,13 +222,13 @@ export function PortfolioView() {
         </AnimatePresence>
       </div>
 
-      <section className="mt-4 rounded-2xl border border-[#3c2f72] bg-panel p-5 shadow-[0_0_40px_rgba(91,111,214,0.12)]">
+      <section className="mt-4 rounded-2xl border border-[#2b3350] bg-panel p-5">
         <div className="flex items-start justify-between gap-3">
           <p className="text-sm text-muted">{rows.length === 0 ? "Total Value" : `Total Value (${label})`}</p>
           <button
             type="button"
             onClick={() => void loadPrices(true)}
-            className="grid size-11 place-items-center rounded-full text-muted hover:bg-white/5 hover:text-foreground"
+            className="grid size-11 place-items-center rounded-sm text-muted hover:bg-white/5 hover:text-foreground"
             aria-label="Refresh prices"
           >
             <RefreshCw className={cn("size-4", loading && "motion-safe:animate-spin")} />
@@ -277,7 +277,7 @@ export function PortfolioView() {
             aria-checked={range === item}
             onClick={() => setRange(item)}
             className={cn(
-              "min-h-10 shrink-0 rounded-full px-3 text-sm",
+              "min-h-10 shrink-0 rounded-sm px-3 text-sm",
               range === item ? "bg-[#241c3d] text-foreground ring-1 ring-primary/70" : "bg-[#141824] text-muted",
             )}
           >
@@ -305,7 +305,7 @@ export function PortfolioView() {
             setEditorKey((key) => key + 1);
             setEditorOpen(true);
           }}
-          className="inline-flex min-h-11 items-center gap-1 rounded-full bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
+          className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
         >
           <Plus className="size-4" />
           Add Asset
@@ -333,7 +333,7 @@ export function PortfolioView() {
               >
                 <div className="flex items-start gap-3">
                   <span
-                    className="grid size-11 shrink-0 place-items-center rounded-full text-[11px] font-semibold"
+                    className="grid size-11 shrink-0 place-items-center rounded-sm text-[11px] font-semibold"
                     style={{ color, background: `${color}22` }}
                   >
                     {row.holding.symbol}

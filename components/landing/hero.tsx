@@ -1,113 +1,58 @@
-"use client";
-
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import Image from "next/image";
-import { useRef, useState } from "react";
 import { BrowserFrame } from "@/components/landing/browser-frame";
 import { TransitionLink } from "@/components/transition/transition-link";
-import { EASE } from "@/lib/motion";
 
-function pointerTiltAllowed(pointerType: string) {
-  if (pointerType !== "mouse") return false;
-  if (typeof window === "undefined") return false;
-  const fine = window.matchMedia("(pointer: fine)").matches;
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  return fine && !reduced;
-}
+const FACTS = [
+  { figure: "7", label: "Publisher feeds, linked back to the original story" },
+  { figure: "2", label: "Live event sources: Snapshot governance and Binance" },
+  { figure: "0", label: "Trades placed. Praxis never touches an exchange account" },
+];
 
 export function Hero() {
-  const reduce = useReducedMotion();
-  const sectionRef = useRef<HTMLElement>(null);
-  const frameRef = useRef<HTMLDivElement>(null);
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-
-  const { scrollYProgress } = useScroll({
-    target: sectionRef,
-    offset: ["start start", "end start"],
-  });
-  const textY = useTransform(scrollYProgress, [0, 1], [0, -56]);
-  const textOpacity = useTransform(scrollYProgress, [0, 0.7], [1, 0]);
-  const imageY = useTransform(scrollYProgress, [0, 1], [0, -28]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 0.94]);
-  const imageOpacity = useTransform(scrollYProgress, [0, 0.85], [1, 0]);
-  const glowScale = useTransform(scrollYProgress, [0, 1], [1, 1.3]);
-  const glowOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
-
-  const onMove = (event: React.PointerEvent<HTMLDivElement>) => {
-    if (!pointerTiltAllowed(event.pointerType) || !frameRef.current) return;
-    const rect = frameRef.current.getBoundingClientRect();
-    const px = (event.clientX - rect.left) / rect.width - 0.5;
-    const py = (event.clientY - rect.top) / rect.height - 0.5;
-    setTilt({ x: py * -3.5, y: px * 4.5 });
-  };
-
   return (
-    <section
-      id="product"
-      ref={sectionRef}
-      className="relative overflow-hidden px-4 pb-20 pt-28 sm:px-6 sm:pt-32 lg:pb-28 lg:pt-36"
-    >
-      <motion.div
-        aria-hidden
-        className="pointer-events-none absolute left-1/2 top-24 h-[420px] w-[min(900px,90vw)] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(91,111,214,0.16),transparent_68%)]"
-        style={reduce ? undefined : { scale: glowScale, opacity: glowOpacity }}
-      />
-      <div className="relative mx-auto grid max-w-6xl items-center gap-12 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:gap-10">
-        <motion.div style={reduce ? undefined : { y: textY, opacity: textOpacity }}>
-          <p className="text-xs font-medium tracking-[0.22em] text-[#8b97b8]">FROM INSIGHT TO ACTION</p>
-          <h1 className="mt-4 max-w-xl text-4xl font-semibold tracking-tight text-foreground sm:text-6xl sm:leading-[1.05]">
-            From insight to action.
-          </h1>
-          <p className="mt-5 max-w-lg text-base leading-7 text-muted sm:text-lg">
-            Track your portfolio, follow the stories shaping your assets, and record every investment decision in one intelligent workspace.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <TransitionLink
-              href="/app/for-you"
-              className="inline-flex min-h-11 items-center justify-center rounded-full bg-primary px-5 text-sm font-medium text-white hover:bg-primary-bright"
-            >
-              Open Praxis
-            </TransitionLink>
-            <a
-              href="#features"
-              className="inline-flex min-h-11 items-center justify-center rounded-full border border-white/10 px-5 text-sm font-medium text-foreground hover:bg-white/5"
-            >
-              Explore the features
-            </a>
-          </div>
-        </motion.div>
-        <motion.div
-          ref={frameRef}
-          onPointerMove={onMove}
-          onPointerLeave={() => setTilt({ x: 0, y: 0 })}
-          className="relative"
-          style={{
-            perspective: 1200,
-            ...(reduce ? {} : { y: imageY, scale: imageScale, opacity: imageOpacity }),
-          }}
-        >
-          <motion.div
-            animate={reduce ? undefined : { rotateX: tilt.x, rotateY: tilt.y }}
-            transition={{ duration: 0.45, ease: EASE }}
-            style={{ transformStyle: "preserve-3d" }}
+    <section id="product" className="px-4 pb-16 pt-32 sm:px-6 sm:pt-40 lg:pb-24">
+      <div className="mx-auto max-w-6xl">
+        <h1 className="max-w-4xl font-serif text-5xl leading-[1.02] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
+          From insight to action.
+        </h1>
+        <p className="mt-8 max-w-xl text-base leading-7 text-muted sm:text-lg">
+          Praxis is a research workspace for digital-asset investors. Holdings, market news, saved research and a decision journal, in one place.
+        </p>
+        <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <TransitionLink
+            href="/app/for-you"
+            className="inline-flex min-h-11 items-center justify-center rounded-sm bg-foreground px-5 text-sm font-medium text-background hover:bg-white"
           >
-            <div
-              aria-hidden
-              className="pointer-events-none absolute -inset-6 -z-10 rounded-[2rem] bg-[radial-gradient(ellipse_at_center,rgba(91,111,214,0.22),transparent_70%)]"
-            />
-            <BrowserFrame>
-              <Image
-                src="/assets/nexus/nexus-portfolio.png"
-                alt="Praxis portfolio screen with a pound total, daily change, allocation chart, and holdings for ETH, SOL, and BTC."
-                width={2050}
-                height={1148}
-                priority
-                sizes="(min-width: 1024px) 640px, 100vw"
-                className="h-auto w-full"
-              />
-            </BrowserFrame>
-          </motion.div>
-        </motion.div>
+            Open Praxis
+          </TransitionLink>
+          <a
+            href="#features"
+            className="inline-flex min-h-11 items-center justify-center rounded-sm border border-white/15 px-5 text-sm font-medium text-foreground hover:bg-white/5"
+          >
+            See how it works
+          </a>
+        </div>
+
+        <dl className="mt-16 grid border-t border-white/10 sm:grid-cols-3">
+          {FACTS.map((fact) => (
+            <div key={fact.label} className="border-b border-white/10 py-6 sm:border-b-0 sm:pr-8">
+              <dt className="font-mono text-4xl tabular-nums text-foreground">{fact.figure}</dt>
+              <dd className="mt-2 max-w-[16rem] text-sm leading-6 text-muted">{fact.label}</dd>
+            </div>
+          ))}
+        </dl>
+
+        <BrowserFrame className="mt-10">
+          <Image
+            src="/assets/nexus/nexus-portfolio.png"
+            alt="Praxis portfolio screen with a pound total, daily change, allocation chart, and holdings for ETH, SOL, and BTC."
+            width={2050}
+            height={1148}
+            priority
+            sizes="(min-width: 1152px) 1152px, 100vw"
+            className="h-auto w-full"
+          />
+        </BrowserFrame>
       </div>
     </section>
   );

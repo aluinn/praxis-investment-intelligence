@@ -28,8 +28,13 @@
   --color-positive: var(--positive);
   --color-negative: var(--negative);
   --color-warning: var(--warning);
+  --radius-lg: 2px;
+  --radius-xl: 3px;
+  --radius-2xl: 3px;
+  --radius-3xl: 4px;
   --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-serif: var(--font-serif), ui-serif, Georgia, serif;
 }
 
 html {
@@ -51,7 +56,7 @@ body {
 }
 
 ::selection {
-  background: rgba(130, 92, 237, 0.35);
+  background: rgba(91, 111, 214, 0.35);
 }
 
 :focus-visible {

@@ -74,15 +74,8 @@ export function IntroOverlay({
             animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
             transition={{ duration: reduce ? 0.3 : DURATION.introWord, ease: EASE }}
           >
-            <motion.span
-              aria-hidden
-              className="absolute h-24 w-64 rounded-full bg-[radial-gradient(ellipse_at_center,rgba(91,111,214,0.55),rgba(120,134,224,0.2)_46%,transparent_72%)] blur-2xl"
-              initial={{ opacity: 0, scale: 0.85 }}
-              animate={reduce ? { opacity: 0.35, scale: 1 } : { opacity: [0, 0.9, 0.38], scale: [0.85, 1.04, 1] }}
-              transition={{ duration: 1.35, ease: EASE, times: [0, 0.42, 1] }}
-            />
             <motion.p
-              className="relative text-5xl font-semibold text-[#dde3f1] sm:text-7xl"
+              className="relative font-serif text-5xl font-normal text-[#dde3f1] sm:text-7xl"
               initial={{ letterSpacing: reduce ? "0.08em" : "0.35em" }}
               animate={{ letterSpacing: "0.08em" }}
               transition={{ duration: reduce ? 0.2 : DURATION.introWord, ease: EASE }}

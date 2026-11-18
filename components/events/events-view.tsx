@@ -112,7 +112,7 @@ export function EventsView() {
           <button
             type="button"
             onClick={() => void load(true)}
-            className="grid size-11 shrink-0 place-items-center rounded-full border border-white/10 text-muted hover:text-foreground"
+            className="grid size-11 shrink-0 place-items-center rounded-sm border border-white/10 text-muted hover:text-foreground"
             aria-label="Refresh live events"
           >
             <RefreshCw className={cn("size-4", status === "loading" && "motion-safe:animate-spin")} />
@@ -121,7 +121,7 @@ export function EventsView() {
             type="button"
             onClick={() => setSearchOpen((open) => !open)}
             aria-expanded={searchOpen}
-            className="grid size-11 shrink-0 place-items-center rounded-full border border-white/10 text-muted hover:text-foreground"
+            className="grid size-11 shrink-0 place-items-center rounded-sm border border-white/10 text-muted hover:text-foreground"
             aria-label="Search events"
           >
             <Search className="size-4" />
@@ -132,7 +132,7 @@ export function EventsView() {
               setEditing(null);
               setDialogOpen(true);
             }}
-            className="inline-flex min-h-11 items-center gap-1 rounded-full bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
+            className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
           >
             <Plus className="size-4" />
             New Event
@@ -183,7 +183,7 @@ export function EventsView() {
               type="button"
               aria-pressed={active}
               onClick={() => setFilter(item)}
-              className="min-h-10 shrink-0 rounded-full px-3 text-xs font-semibold tracking-wide"
+              className="min-h-10 shrink-0 rounded-sm px-3 text-xs font-semibold tracking-wide"
               style={{
                 color: style.text,
                 background: style.bg,
@@ -256,7 +256,7 @@ export function EventsView() {
                   setEditing(null);
                   setDialogOpen(true);
                 }}
-                className="mt-5 inline-flex min-h-11 items-center gap-1 rounded-full bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
+                className="mt-5 inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
               >
                 <Plus className="size-4" />
                 New Event
@@ -280,7 +280,7 @@ export function EventsView() {
               >
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span
-                    className="rounded-full px-2.5 py-1 text-[11px] font-medium tracking-wide"
+                    className="rounded-sm px-2.5 py-1 text-[11px] font-medium tracking-wide"
                     style={{ color: style.text, background: style.bg }}
                   >
                     {event.category}
@@ -331,7 +331,7 @@ export function EventsView() {
                       return (
                         <span
                           key={symbol}
-                          className="rounded-full px-2 py-0.5 text-xs font-semibold"
+                          className="rounded-sm px-2 py-0.5 text-xs font-semibold"
                           style={{ color, background: `${color}22` }}
                         >
                           {symbol}

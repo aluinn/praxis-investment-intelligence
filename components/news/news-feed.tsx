@@ -142,7 +142,7 @@ export function NewsFeed() {
           <button
             type="button"
             onClick={() => void load(true)}
-            className="grid size-11 place-items-center rounded-full border border-white/10 text-muted hover:text-foreground"
+            className="grid size-11 place-items-center rounded-sm border border-white/10 text-muted hover:text-foreground"
             aria-label="Refresh news"
           >
             <RefreshCw className={cn("size-4", status === "loading" && "motion-safe:animate-spin")} />
@@ -151,7 +151,7 @@ export function NewsFeed() {
             type="button"
             onClick={() => setSearchOpen((open) => !open)}
             aria-expanded={searchOpen}
-            className="grid size-11 place-items-center rounded-full border border-white/10 text-muted hover:text-foreground"
+            className="grid size-11 place-items-center rounded-sm border border-white/10 text-muted hover:text-foreground"
             aria-label="Search news"
           >
             <Search className="size-4" />
@@ -181,7 +181,7 @@ export function NewsFeed() {
                 return (
                   <span
                     key={symbol}
-                    className="shrink-0 rounded-full px-3 py-1.5 text-xs font-semibold"
+                    className="shrink-0 rounded-sm px-3 py-1.5 text-xs font-semibold"
                     style={{ color: asset.color, background: `${asset.color}22` }}
                   >
                     {asset.symbol}
@@ -192,7 +192,7 @@ export function NewsFeed() {
             <button
               type="button"
               onClick={() => setPickerOpen(true)}
-              className="grid size-11 shrink-0 place-items-center rounded-full border border-white/10 text-muted hover:text-foreground"
+              className="grid size-11 shrink-0 place-items-center rounded-sm border border-white/10 text-muted hover:text-foreground"
               aria-label="Edit your coins"
             >
               <Pencil className="size-4" />
@@ -233,7 +233,7 @@ export function NewsFeed() {
               type="button"
               aria-pressed={active}
               onClick={() => setFilter(item)}
-              className="min-h-10 shrink-0 rounded-full px-3 text-xs font-semibold tracking-wide"
+              className="min-h-10 shrink-0 rounded-sm px-3 text-xs font-semibold tracking-wide"
               style={{
                 color: style.text,
                 background: style.bg,

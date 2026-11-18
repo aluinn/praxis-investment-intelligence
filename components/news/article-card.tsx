@@ -38,7 +38,7 @@ export function ArticleCard({
       {article.excerpt ? <p className="mt-2 line-clamp-3 text-sm leading-6 text-muted">{article.excerpt}</p> : null}
       <div className="mt-4 flex items-center justify-between gap-3">
         <span
-          className="rounded-full px-2.5 py-1 text-[11px] font-medium tracking-wide"
+          className="rounded-sm px-2.5 py-1 text-[11px] font-medium tracking-wide"
           style={{ color: style.text, background: style.bg }}
         >
           {tag}

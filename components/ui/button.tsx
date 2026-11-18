@@ -5,7 +5,7 @@ import { cn } from "@/lib/cn";
 
 const variants = {
   primary:
-    "bg-primary text-white shadow-[0_8px_24px_rgba(91,111,214,0.28)] hover:bg-primary-bright",
+    "bg-primary text-white hover:bg-primary-bright",
   quiet: "bg-[#151a26] text-foreground hover:bg-[#1c2333]",
   ghost: "bg-transparent text-muted hover:bg-white/5 hover:text-foreground",
   outline: "border border-white/10 bg-transparent text-foreground hover:bg-white/5",
@@ -22,7 +22,7 @@ export function Button({
       whileTap={reduce || props.disabled ? undefined : { scale: 0.96 }}
       transition={{ duration: 0.12 }}
       className={cn(
-        "inline-flex min-h-11 items-center justify-center gap-2 rounded-full px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex min-h-11 items-center justify-center gap-2 rounded-sm px-4 text-sm font-medium transition-colors disabled:cursor-not-allowed disabled:opacity-50",
         variants[variant],
         className,
       )}

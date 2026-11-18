@@ -148,7 +148,7 @@ export function LandingPage() {
     <>
       <a
         href="#product"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-full focus:bg-primary focus:px-4 focus:py-2"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:rounded-sm focus:bg-primary focus:px-4 focus:py-2"
       >
         Skip to content
       </a>
@@ -156,7 +156,7 @@ export function LandingPage() {
         <button
           type="button"
           onClick={skip}
-          className="fixed bottom-6 right-6 z-[60] min-h-11 rounded-full border border-white/15 bg-[#121624] px-4 text-sm text-foreground"
+          className="fixed bottom-6 right-6 z-[60] min-h-11 rounded-sm border border-white/15 bg-[#121624] px-4 text-sm text-foreground"
         >
           Skip intro
         </button>

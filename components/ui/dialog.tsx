@@ -108,7 +108,7 @@ export function Dialog({
             aria-labelledby={titleId}
             aria-describedby={description ? descriptionId : undefined}
             className={cn(
-              "relative z-10 max-h-[min(92vh,860px)] w-full overflow-y-auto rounded-t-2xl border border-white/10 bg-[#0c101c] p-5 shadow-[0_30px_80px_rgba(0,0,0,0.5)] sm:rounded-2xl sm:p-6",
+              "relative z-10 max-h-[min(92vh,860px)] w-full overflow-y-auto rounded-t-sm border border-white/10 bg-[#0c101c] p-5 sm:rounded-2xl sm:p-6",
               wide ? "max-w-lg" : "max-w-md",
             )}
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 28, scale: 0.98 }}
@@ -130,7 +130,7 @@ export function Dialog({
               <button
                 type="button"
                 onClick={onClose}
-                className="grid size-11 shrink-0 place-items-center rounded-full text-muted hover:bg-white/5 hover:text-foreground"
+                className="grid size-11 shrink-0 place-items-center rounded-sm text-muted hover:bg-white/5 hover:text-foreground"
                 aria-label="Close"
               >
                 <X className="size-4" />

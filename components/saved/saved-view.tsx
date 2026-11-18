@@ -217,7 +217,7 @@ export function SavedView() {
                       <div className="mt-3 flex flex-wrap gap-2">
                         <button
                           type="button"
-                          className="min-h-11 rounded-full px-3 text-sm text-muted hover:bg-white/5 hover:text-foreground"
+                          className="min-h-11 rounded-sm px-3 text-sm text-muted hover:bg-white/5 hover:text-foreground"
                           onClick={() => {
                             setName(collection.name);
                             setNameError("");
@@ -228,7 +228,7 @@ export function SavedView() {
                         </button>
                         <button
                           type="button"
-                          className="min-h-11 rounded-full px-3 text-sm text-muted hover:bg-white/5 hover:text-foreground disabled:opacity-40"
+                          className="min-h-11 rounded-sm px-3 text-sm text-muted hover:bg-white/5 hover:text-foreground disabled:opacity-40"
                           disabled={collection.articleIds.length > 0}
                           onClick={() => setDeleteId(collection.id)}
                         >
@@ -369,7 +369,7 @@ function CollectionDetail({
       <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
         <h2 className="text-2xl font-semibold">{collection.name}</h2>
         <div className="flex gap-2">
-          <button type="button" onClick={onRename} className="min-h-11 rounded-full px-3 text-sm text-muted hover:bg-white/5">
+          <button type="button" onClick={onRename} className="min-h-11 rounded-sm px-3 text-sm text-muted hover:bg-white/5">
             Rename
           </button>
           <Button type="button" onClick={onAdd}>
@@ -406,7 +406,7 @@ function CollectionDetail({
                 <button
                   type="button"
                   onClick={() => onRemove(article.id)}
-                  className="min-h-11 rounded-full px-3 text-sm text-muted hover:text-foreground"
+                  className="min-h-11 rounded-sm px-3 text-sm text-muted hover:text-foreground"
                 >
                   Remove from collection
                 </button>

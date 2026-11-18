@@ -124,7 +124,7 @@ export function EntryDialog({
               aria-pressed={draft.type === type.id}
               onClick={() => set({ type: type.id })}
               className={cn(
-                "min-h-11 rounded-full border border-transparent text-sm text-muted",
+                "min-h-11 rounded-sm border border-transparent text-sm text-muted",
                 draft.type === type.id && type.active,
                 draft.type === type.id && "bg-white/5",
               )}
