@@ -1,96 +1,130 @@
+<div align="center">
+
 # Praxis Investment Intelligence
 
-*From Insight to Action.* Praxis is the Ancient Greek word for action or practice: the application of knowledge through informed action.
+**From insight to action. A research workspace for digital-asset investors: portfolio, live news, saved research and a decision journal in one place.**
 
-Praxis Investment Intelligence brings together financial information, research, portfolio analytics and investment journaling to support informed decisions. This edition focuses on digital-asset investors. It combines a portfolio view, live crypto headlines, saved research, and a personal trade journal.
+[![CI](https://github.com/aluinn/nexus-crypto-app-/actions/workflows/ci.yml/badge.svg)](https://github.com/aluinn/nexus-crypto-app-/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/aluinn/nexus-crypto-app-/actions/workflows/codeql.yml/badge.svg)](https://github.com/aluinn/nexus-crypto-app-/actions/workflows/codeql.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/aluinn/nexus-crypto-app-?style=flat)](https://github.com/aluinn/nexus-crypto-app-/stargazers)
 
-Information in Praxis is for organisation and reference. It is not financial advice, and it does not place trades.
+<!-- HERO: replace this screenshot with a screen recording (GIF or MP4) of the app when you have one. -->
+<img src="docs/assets/praxis-landing-hero.png" alt="Praxis landing page: 'From insight to action.' with a portfolio screenshot" width="860">
 
-## Run it locally
+[Architecture](docs/ARCHITECTURE.md) · [Data sources](docs/DATA_SOURCES.md) · [Roadmap](ROADMAP.md) · [Contributing](CONTRIBUTING.md)
+
+</div>
+
+*Praxis* is the Ancient Greek word for action or practice: knowledge applied through informed action. Praxis brings market information, research and your own reasoning together so decisions are made with the whole picture. It is for organisation and reference. It is not financial advice, and it does not place trades.
+
+## Features
+
+- **Portfolio.** Track holdings and see total value, daily change, allocation and 1D / 7D / 1M / 3M / 1Y / ALL ranges, in GBP, USD, EUR, JPY, CAD or AUD. Every price is labelled `Live`, `Cached` or `Demo`.
+- **For You news.** Headlines from seven publisher RSS feeds (CoinDesk, Cointelegraph, Decrypt, CryptoSlate, The Block, Bitcoin Magazine, The Defiant), tagged by asset and filterable by the assets you follow. Excerpts link back to the original story.
+- **Saved research.** Save articles and arrange them into collections. Saved stories are kept in full, so they survive the live feed moving on.
+- **Trade journal.** Record buys, sells, notes and ideas with price, size, tags and the reasoning behind each decision.
+- **Events calendar.** Live governance votes from Snapshot and exchange listings and launches from Binance, plus your own events (upgrades, unlocks, regulatory dates), with category filters.
+- **Private by design.** No accounts, no database. Holdings, journal, saved research and events stay in your browser and are validated when read.
+- **Resilient.** One feed or provider failing never blanks the page. The app falls back to cached or clearly labelled demo data.
+
+## Screenshots
+
+| | |
+| --- | --- |
+| ![Portfolio](docs/assets/praxis-portfolio.png)<br>**Portfolio** | ![For You](docs/assets/praxis-for-you.png)<br>**For You** |
+| ![Journal](docs/assets/praxis-journal.png)<br>**Trade journal** | ![Events](docs/assets/praxis-events.png)<br>**Events** |
+
+<details>
+<summary>More screenshots</summary>
+
+| | |
+| --- | --- |
+| ![Saved](docs/assets/praxis-saved.png)<br>**Saved research** | ![Features](docs/assets/praxis-landing-features.png)<br>**Landing page features** |
+| ![Mobile portfolio](docs/assets/praxis-mobile-portfolio.png)<br>**Portfolio on a phone** | ![Mobile news](docs/assets/praxis-mobile-for-you.png)<br>**News on a phone** |
+
+</details>
+
+The portfolio and journal figures in these screenshots are demonstration data. News and events are live feeds from the day they were captured.
+
+## How it works
+
+```mermaid
+flowchart LR
+  B[Browser] -->|fetch| API["Next.js routes<br>/api/news · /api/prices · /api/events"]
+  API --> SRC[RSS · Coinbase · Frankfurter · Snapshot · Binance]
+  API -->|validated JSON| B
+  B <--> LS[(localStorage<br>holdings · journal · saved · events)]
+```
+
+1. The browser never calls a third party. Server routes fetch public data in parallel, each source with its own timeout.
+2. Responses are stripped to plain text where needed, checked with Zod and cached in memory (news 12 min, events 15 min, prices 60 s).
+3. Prices are fetched in USD from Coinbase and converted with a Frankfurter FX rate. If a quote is missing, the last one is reused (`Cached`), otherwise an illustrative value is shown (`Demo`).
+4. Your own data never leaves the browser. See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) for sequences, failure modes and trade-offs.
+
+## Quick start
+
+Requires Node.js 20.9 or newer. No API keys or environment variables.
 
 ```bash
+git clone https://github.com/aluinn/nexus-crypto-app-.git
+cd nexus-crypto-app-
 npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000). The first visit in a browser session plays the opening wordmark. Later visits in the same session use a short fade. `prefers-reduced-motion` skips the blur, letter-spacing, and long hold.
+Open <http://localhost:3000>. The first visit in a browser session plays a short opening wordmark; later visits use a quick fade, and `prefers-reduced-motion` skips the long hold.
 
-If the dev server is bound to all interfaces and you open it at `127.0.0.1`, that host must stay in `allowedDevOrigins`. Next.js otherwise refuses the development websocket, and the pages stay on the server-rendered shell.
-
-Other checks:
-
-```bash
-npm run lint
-npx tsc --noEmit
-npm run build
-```
-
-## How live news works
-
-`/app/for-you` asks the server route `/api/news`. The browser never calls publisher feeds itself.
-
-The route fetches these RSS feeds at the same time, each with its own timeout:
-
-- CoinDesk — `https://www.coindesk.com/arc/outboundfeeds/rss/`
-- Cointelegraph — `https://cointelegraph.com/rss`
-- Decrypt — `https://decrypt.co/feed`
-- CryptoSlate — `https://cryptoslate.com/feed/`
-
-A failed source is dropped. The others are still returned. Titles and excerpts are stripped to plain text, checked with Zod, deduplicated, and sorted newest first. Successful results stay in memory for 12 minutes. The refresh button calls `/api/news?refresh=1`.
-
-If every feed fails, the route returns local fallback stories and the page says **Showing cached stories**.
-
-Excerpts are the feed text. Praxis does not write summaries and does not fetch article pages.
-
-## How live pricing works
-
-`/app/portfolio` asks `/api/prices`. `CoinbaseMarketDataProvider` reads Coinbase’s public Exchange endpoints for GBP pairs (`/products/{SYMBOL}-GBP/ticker` and `/stats`). No API key, account, or trading permission is used.
-
-Quotes are cached for about 60 seconds. The portfolio page refreshes about once a minute while it is visible and pauses while the tab is hidden.
-
-If a pair is missing or the request fails:
-
-- the last successful quote is reused and labelled **Cached**
-- otherwise a fallback number is used and labelled **Demo**
-
-**Live** appears only when the figure came from Coinbase. Range buttons (1D, 7D, 1M, 3M, 1Y, ALL) use the 24 hour open or public daily candles. 1Y and ALL are limited to Coinbase’s 300-candle window.
-
-Holdings are quantities. Value is `quantity × price`. Allocation is each value divided by the portfolio total.
-
-## What stays in this browser
-
-These keys live in `localStorage` and are validated on read. A broken value falls back to the built-in sample:
-
-| Key | Contents |
+| Command | What it does |
 | --- | --- |
-| `nexus.holdings.v1` | Portfolio holdings |
-| `nexus.journal.v1` | Trade journal entries |
-| `nexus.saved.v1` | Saved articles and collections |
-| `nexus.notifications.dismissed.v1` | Dismissed demonstration notices |
+| `npm run dev` | Start the dev server |
+| `npm run build` / `npm start` | Production build and server |
+| `npm run lint` | ESLint |
+| `npm run typecheck` | Generate route types, then `tsc --noEmit` |
+| `npm test` | Unit tests (needs Node 22.18+) |
+| `npm run test:e2e` | Smoke test against the production build (run `npm run build` first) |
+| `npm run bench` | Micro-benchmarks, see [docs/PERFORMANCE.md](docs/PERFORMANCE.md) |
 
-Storage keys keep their original `nexus.*` prefix from before the rebrand so existing saved data is preserved.
+If the dev server is bound to all interfaces and you open it at `127.0.0.1`, that host must stay in `allowedDevOrigins` in `next.config.ts`; otherwise Next.js refuses the development websocket.
 
-The opening animation flag is `sessionStorage` key `nexus-intro-complete`.
+## Deploy
 
-Saved articles keep the normalised story, so they remain after the live feed refreshes.
+Praxis is a standard Next.js app with server routes, so it needs a host that runs Next.js server code (for example Vercel or any Node host using `npm run build && npm start`). It needs no environment variables. Deployment has not been tested for this repository yet. Note that caches are in memory per server instance ([why it matters](docs/issues/shared-server-cache.md)).
 
-## Add another RSS source
+## FAQ
 
-1. Add the publication name to `NEWS_SOURCES` in `types/index.ts`.
-2. Append `{ source, url }` to `FEEDS` in `lib/news/sources.ts`.
-3. Use the publisher’s official feed. Do not scrape article pages.
+**Is this financial advice? Can it trade?** No to both. Praxis organises information. It has no wallet or exchange connection and cannot place orders.
 
-## Replace the price provider
+**Where is my data stored?** In your browser's `localStorage`, on this device only. Clearing site data deletes it, and there is no sync between devices. The keys keep the original `nexus.*` prefix from before the rename so existing data is preserved: `nexus.holdings.v1`, `nexus.journal.v1`, `nexus.saved.v1`, `nexus.interests.v1`, `nexus.currency.v1`, `nexus.events.v1`.
 
-`MarketDataProvider` in `lib/market/types.ts` is the seam. `lib/market/service.ts` calls `CoinbaseMarketDataProvider` and falls back through `MockMarketDataProvider`.
+**Why does a price say Demo or Cached?** `Live` means the number came from Coinbase just now. `Cached` is the last good quote. `Demo` is an illustrative placeholder used when no quote exists. Assets without a Coinbase USD pair use demo prices.
 
-To swap providers, implement `getPrices(symbols, currency)` and use that class from `quoteFor` in `lib/market/service.ts`. Keep the `live` / `cached` / `demo` labels honest.
+**Is the GBP price a real GBP market price?** No. It is the USD price multiplied by a current FX rate.
 
-## Known limitations
+**How far back does history go?** `1Y` and `ALL` are limited to Coinbase's 300 daily candles.
 
-- Holdings, journal entries, saved stories, and dismissed notices stay on one browser. There is no account sync.
-- Only public GBP pairs from Coinbase are live. Other assets use labelled demo prices.
-- News is headlines and short excerpts, not full articles.
-- Notifications are demonstrations. There is no background alert service.
-- Portfolio history for 1Y and ALL covers up to 300 daily candles.
-- Praxis does not connect to wallets or exchanges and cannot place orders.
+**Are notifications real alerts?** No. The Notifications page shows demonstration notices only. There is no background alert service.
+
+**Does it summarise articles?** No. It shows the feed's own excerpt and links to the publisher.
+
+## Good first issues
+
+| Issue draft | Label |
+| --- | --- |
+| [Tag more assets in news headlines](docs/issues/more-news-tags.md) | good first issue |
+| [Add Swiss franc as a display currency](docs/issues/add-chf-currency.md) | good first issue |
+| [Remember the selected portfolio time range](docs/issues/persist-portfolio-range.md) | good first issue |
+| [Unit tests for the date formatters](docs/issues/format-tests.md) | good first issue |
+| [Export holdings as CSV](docs/issues/holdings-csv-export.md) | good first issue |
+
+More ideas are in [docs/issues/](docs/issues/) and the [roadmap](ROADMAP.md).
+
+## Credits
+
+- **Data:** publisher RSS feeds from [CoinDesk](https://www.coindesk.com), [Cointelegraph](https://cointelegraph.com), [Decrypt](https://decrypt.co), [CryptoSlate](https://cryptoslate.com), [The Block](https://www.theblock.co), [Bitcoin Magazine](https://bitcoinmagazine.com) and [The Defiant](https://thedefiant.io); prices and history from the [Coinbase Exchange API](https://docs.cdp.coinbase.com/exchange/introduction/welcome); FX rates from [Frankfurter](https://frankfurter.dev); governance votes from [Snapshot](https://snapshot.org); announcements from [Binance](https://www.binance.com).
+- **Libraries:** [Next.js](https://nextjs.org), [React](https://react.dev), [Tailwind CSS](https://tailwindcss.com), [Framer Motion](https://www.framer.com/motion/), [Recharts](https://recharts.org), [Zod](https://zod.dev), [rss-parser](https://github.com/rbren/rss-parser), [Lucide](https://lucide.dev). Typefaces: [Geist](https://vercel.com/font) and [Newsreader](https://fonts.google.com/specimen/Newsreader).
+- **Author:** Aluinn McDonald.
+
+## Licence
+
+[MIT](LICENSE) © 2026 Aluinn McDonald
