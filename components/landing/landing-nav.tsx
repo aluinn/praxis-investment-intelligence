@@ -54,7 +54,7 @@ export function LandingNav() {
         <div className="flex items-center gap-2">
           <TransitionLink
             href="/app/for-you"
-            className="inline-flex min-h-11 items-center rounded-sm bg-foreground px-4 text-sm font-medium text-background hover:bg-white"
+            className="inline-flex min-h-11 items-center rounded-sm bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
           >
             Open Praxis
           </TransitionLink>

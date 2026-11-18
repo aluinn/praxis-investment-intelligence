@@ -7,8 +7,10 @@
   --input: #182030;
   --foreground: #e7edf3;
   --muted: #7d899d;
-  --primary: #5b6fd6;
-  --primary-bright: #7686e0;
+  --primary: #6577e8;
+  --primary-bright: #8393f2;
+  --accent: #e3b56b;
+  --teal: #5fd1c1;
   --positive: #6ad09d;
   --negative: #dd524c;
   --warning: #e89838;
@@ -25,6 +27,8 @@
   --color-muted: var(--muted);
   --color-primary: var(--primary);
   --color-primary-bright: var(--primary-bright);
+  --color-accent: var(--accent);
+  --color-teal: var(--teal);
   --color-positive: var(--positive);
   --color-negative: var(--negative);
   --color-warning: var(--warning);

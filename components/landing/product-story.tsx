@@ -9,6 +9,7 @@ import { Reveal } from "@/components/landing/reveal";
 const CHAPTERS = [
   {
     id: "for-you",
+    tone: "text-primary-bright",
     kicker: "For You",
     heading: "News that knows what matters to you.",
     body: "Bring together stories from leading crypto publications, prioritised around the assets you follow. Scan concise excerpts, visit the original report or save an article for later.",
@@ -19,6 +20,7 @@ const CHAPTERS = [
   },
   {
     id: "portfolio",
+    tone: "text-teal",
     kicker: "Portfolio",
     heading: "Every holding. One clear view.",
     body: "Organise your digital assets in one portfolio, calculate their current value and understand allocation through a clear visual breakdown.",
@@ -29,6 +31,7 @@ const CHAPTERS = [
   },
   {
     id: "journal",
+    tone: "text-accent",
     kicker: "Trade Journal",
     heading: "Remember the thinking behind every move.",
     body: "Record buys, sells, notes and ideas alongside the reasoning that shaped each decision.",
@@ -39,6 +42,7 @@ const CHAPTERS = [
   },
   {
     id: "saved",
+    tone: "text-primary-bright",
     kicker: "Saved Research",
     heading: "Turn market noise into organised research.",
     body: "Save important stories and arrange them into collections by asset, investment thesis or market event.",
@@ -49,6 +53,7 @@ const CHAPTERS = [
   },
   {
     id: "events",
+    tone: "text-teal",
     kicker: "Events",
     heading: "See the catalysts before they land.",
     body: "Live governance votes from Snapshot and exchange activity from Binance, alongside your own network upgrades, unlocks, and other catalysts, in one filterable calendar.",
@@ -124,7 +129,7 @@ export function ProductStory() {
           <div className="space-y-16">
             {CHAPTERS.map((chapter) => (
               <article key={chapter.id} className="space-y-5">
-                <p className="font-mono text-xs uppercase tracking-wider text-[#8b97b8]">{chapter.kicker}</p>
+                <p className={`font-mono text-xs uppercase tracking-wider ${chapter.tone}`}>{chapter.kicker}</p>
                 <h3 className="font-serif text-3xl leading-tight tracking-tight">{chapter.heading}</h3>
                 <p className="text-base leading-7 text-muted">{chapter.body}</p>
                 <Shot chapter={chapter} />
@@ -136,7 +141,7 @@ export function ProductStory() {
             <div className="space-y-16 lg:hidden">
               {CHAPTERS.map((chapter) => (
                 <Reveal key={chapter.id} as="article" className="space-y-5">
-                  <p className="font-mono text-xs uppercase tracking-wider text-[#8b97b8]">{chapter.kicker}</p>
+                  <p className={`font-mono text-xs uppercase tracking-wider ${chapter.tone}`}>{chapter.kicker}</p>
                   <h3 className="font-serif text-3xl leading-tight tracking-tight">{chapter.heading}</h3>
                   <p className="text-base leading-7 text-muted">{chapter.body}</p>
                   <Shot chapter={chapter} />
@@ -161,7 +166,7 @@ export function ProductStory() {
                   <div className="relative min-h-[260px] overflow-hidden">
                     {CHAPTERS.map((chapter, index) => (
                       <motion.div key={chapter.id} className="absolute inset-0" style={{ y: styles[index].y }}>
-                        <p className="font-mono text-xs uppercase tracking-wider text-[#8b97b8]">{chapter.kicker}</p>
+                        <p className={`font-mono text-xs uppercase tracking-wider ${chapter.tone}`}>{chapter.kicker}</p>
                         <h3 className="mt-3 font-serif text-4xl leading-tight tracking-tight">{chapter.heading}</h3>
                         <p className="mt-4 max-w-md text-base leading-7 text-muted">{chapter.body}</p>
                       </motion.div>

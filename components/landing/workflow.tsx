@@ -1,3 +1,5 @@
+import { Reveal } from "@/components/landing/reveal";
+
 const STEPS = [
   ["Read", "Scan stories tied to the assets you follow."],
   ["Save", "Keep the pieces you want to revisit, in collections."],
@@ -14,11 +16,11 @@ export function Workflow() {
         </h2>
         <ol className="mt-10 grid border-t border-white/10 md:grid-cols-4">
           {STEPS.map(([title, body], index) => (
-            <li key={title} className="border-b border-white/10 py-6 md:border-b-0 md:pr-6">
-              <p className="font-mono text-xs text-muted">0{index + 1}</p>
+            <Reveal as="li" key={title} delay={index * 0.1} className="border-b border-white/10 py-6 md:border-b-0 md:pr-6">
+              <p className="font-mono text-xs text-accent">0{index + 1}</p>
               <h3 className="mt-4 text-lg font-medium">{title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
-            </li>
+            </Reveal>
           ))}
         </ol>
       </div>

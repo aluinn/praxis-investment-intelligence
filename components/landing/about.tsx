@@ -1,7 +1,9 @@
+import { Reveal } from "@/components/landing/reveal";
+
 export function About() {
   return (
     <section id="about" className="px-4 py-20 sm:px-6" aria-labelledby="about-heading">
-      <div className="mx-auto grid max-w-6xl gap-10 border-t border-white/10 pt-10 lg:grid-cols-[1fr_1.4fr]">
+      <Reveal className="mx-auto grid max-w-6xl gap-10 border-t border-white/10 pt-10 lg:grid-cols-[1fr_1.4fr]">
         <h2 id="about-heading" className="font-serif text-3xl leading-tight tracking-tight sm:text-4xl">
           Praxis: knowledge put into practice.
         </h2>
@@ -16,7 +18,7 @@ export function About() {
             Information in Praxis is for organisation and reference. It is not financial advice, and Praxis does not connect to an exchange account or place trades.
           </p>
         </div>
-      </div>
+      </Reveal>
     </section>
   );
 }
