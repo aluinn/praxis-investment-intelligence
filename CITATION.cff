@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use Praxis in your work, please cite it as below."
+title: "Praxis Investment Intelligence"
+type: software
+authors:
+  - name: "Aluinn McDonald"
+repository-code: "https://github.com/aluinn/nexus-crypto-app-"
+license: MIT
+abstract: "A research workspace for digital-asset investors: portfolio tracking, live news, saved research, a decision journal and an events calendar."
+keywords:
+  - investment research
+  - portfolio tracking
+  - nextjs
