@@ -64,25 +64,25 @@ const CHAPTERS = [
   },
 ] as const;
 
-const HOLD = 0.6;
-
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
 }
 
-// A push transition: each chapter rests in place, then slides fully out the
-// top while the next one slides fully in from the bottom at the same rate.
-// The two always tile the container exactly, so nothing is ever translucent
-// or double-exposed — unlike a crossfade, which blends two layers at once.
-function offsetToPercent(offset: number) {
-  if (offset >= 0) return clamp(offset / (1 - HOLD), 0, 1) * 100;
-  if (offset >= -HOLD) return 0;
-  return clamp((offset + HOLD) / (1 - HOLD), -1, 0) * 100;
-}
+// Each chapter owns one slot of the scroll. It sits fully visible around the
+// middle of its slot, then eases out and the next eases in with a small
+// drift, so images never slide past each other and never overlap.
+const HOLD = 0.18;
+const FADE = 0.32;
 
 function useChapterStyle(continuousIndex: MotionValue<number>, index: number) {
-  const y = useTransform(continuousIndex, (value) => `${offsetToPercent(index - value)}%`);
-  return { y };
+  const distance = (value: number) => value - (index + 0.5);
+  const opacity = useTransform(continuousIndex, (value) => {
+    const t = clamp((Math.abs(distance(value)) - HOLD) / FADE, 0, 1);
+    return 1 - t * t * (3 - 2 * t);
+  });
+  const y = useTransform(continuousIndex, (value) => `${clamp(distance(value), -0.6, 0.6) * 36}px`);
+  const scale = useTransform(continuousIndex, (value) => 1 - clamp(Math.abs(distance(value)) - HOLD, 0, 0.4) * 0.06);
+  return { opacity, y, scale };
 }
 
 function Shot({ chapter }: { chapter: (typeof CHAPTERS)[number] }) {
@@ -105,7 +105,7 @@ export function ProductStory() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({ target: trackRef, offset: ["start start", "end end"] });
-  const progress = useSpring(scrollYProgress, { stiffness: 70, damping: 24, mass: 0.7, restDelta: 0.0005 });
+  const progress = useSpring(scrollYProgress, { stiffness: 60, damping: 22, mass: 0.8, restDelta: 0.0005 });
   const continuousIndex = useTransform(progress, (value) => value * CHAPTERS.length);
 
   // CHAPTERS has a fixed length of 5, so these are unrolled rather than
@@ -154,7 +154,7 @@ export function ProductStory() {
                 <div className="sticky top-1/2 -translate-y-1/2">
                   <div className="relative aspect-[2100/1185] overflow-hidden ">
                     {CHAPTERS.map((chapter, index) => (
-                      <motion.div key={chapter.id} className="absolute inset-0" style={{ y: styles[index].y }}>
+                      <motion.div key={chapter.id} className="absolute inset-0" style={styles[index]}>
                         <Shot chapter={chapter} />
                       </motion.div>
                     ))}
@@ -165,7 +165,7 @@ export function ProductStory() {
                 <div className="sticky top-1/2 -translate-y-1/2">
                   <div className="relative min-h-[260px] overflow-hidden">
                     {CHAPTERS.map((chapter, index) => (
-                      <motion.div key={chapter.id} className="absolute inset-0" style={{ y: styles[index].y }}>
+                      <motion.div key={chapter.id} className="absolute inset-0" style={styles[index]}>
                         <p className={`font-mono text-xs uppercase tracking-wider ${chapter.tone}`}>{chapter.kicker}</p>
                         <h3 className="mt-3 font-serif text-4xl leading-tight tracking-tight">{chapter.heading}</h3>
                         <p className="mt-4 max-w-md text-base leading-7 text-muted">{chapter.body}</p>
