@@ -25,7 +25,7 @@ export const ASSETS: AssetInfo[] = [
   { symbol: "SUI", name: "Sui", color: "#93c5fd" },
   { symbol: "FIL", name: "Filecoin", color: "#67e8f9" },
   { symbol: "LTC", name: "Litecoin", color: "#cbd5e1" },
-  { symbol: "MATIC", name: "Polygon", color: "#a78bfa" },
+  { symbol: "MATIC", name: "Polygon", color: "#8b97b8" },
 ];
 
 export const ASSET_MAP = Object.fromEntries(ASSETS.map((asset) => [asset.symbol, asset]));
@@ -66,13 +66,13 @@ export const DEMO_PRICES_USD: Record<string, { price: number; change24h: number 
 };
 
 export const TAG_STYLES: Record<string, { text: string; bg: string }> = {
-  ALL: { text: "#c4b5fd", bg: "#201a3e" },
+  ALL: { text: "#c3cbe0", bg: "#161b2c" },
   BTC: { text: "#e89838", bg: "#24180f" },
-  SOL: { text: "#c4b5fd", bg: "#140f26" },
+  SOL: { text: "#c3cbe0", bg: "#101424" },
   ETH: { text: "#9eb0f0", bg: "#101424" },
   NEAR: { text: "#6ad09d", bg: "#0f1a1d" },
   ADA: { text: "#8eb4ff", bg: "#0c1428" },
   XRP: { text: "#8ecae6", bg: "#101820" },
-  CRYPTO: { text: "#c4b5fd", bg: "#1a1732" },
+  CRYPTO: { text: "#c3cbe0", bg: "#161b2c" },
   LINK: { text: "#93c5fd", bg: "#101820" },
 };

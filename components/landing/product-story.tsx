@@ -12,9 +12,9 @@ const CHAPTERS = [
     kicker: "For You",
     heading: "News that knows what matters to you.",
     body: "Bring together stories from leading crypto publications, prioritised around the assets you follow. Scan concise excerpts, visit the original report or save an article for later.",
-    src: "/assets/nexus/nexus-for-you.png",
-    width: 2110,
-    height: 1192,
+    src: "/assets/praxis/praxis-for-you.png",
+    width: 2100,
+    height: 1185,
     alt: "Praxis For You page with asset filters and news cards from CoinDesk and CryptoSlate.",
   },
   {
@@ -22,9 +22,9 @@ const CHAPTERS = [
     kicker: "Portfolio",
     heading: "Every holding. One clear view.",
     body: "Organise your digital assets in one portfolio, calculate their current value and understand allocation through a clear visual breakdown.",
-    src: "/assets/nexus/nexus-portfolio.png",
-    width: 2050,
-    height: 1148,
+    src: "/assets/praxis/praxis-portfolio.png",
+    width: 2100,
+    height: 1185,
     alt: "Praxis portfolio page with total value, allocation doughnut, and an add-asset control.",
   },
   {
@@ -32,9 +32,9 @@ const CHAPTERS = [
     kicker: "Trade Journal",
     heading: "Remember the thinking behind every move.",
     body: "Record buys, sells, notes and ideas alongside the reasoning that shaped each decision.",
-    src: "/assets/nexus/nexus-journal.png",
-    width: 2088,
-    height: 1190,
+    src: "/assets/praxis/praxis-journal.png",
+    width: 2100,
+    height: 1185,
     alt: "Praxis trade journal with buy, sell, and note entries for LINK, BTC, and ETH.",
   },
   {
@@ -42,9 +42,9 @@ const CHAPTERS = [
     kicker: "Saved Research",
     heading: "Turn market noise into organised research.",
     body: "Save important stories and arrange them into collections by asset, investment thesis or market event.",
-    src: "/assets/nexus/nexus-saved.png",
-    width: 2134,
-    height: 1188,
+    src: "/assets/praxis/praxis-saved.png",
+    width: 2100,
+    height: 1185,
     alt: "Praxis saved articles page with search and stories from Cointelegraph and Decrypt.",
   },
   {
@@ -52,14 +52,14 @@ const CHAPTERS = [
     kicker: "Events",
     heading: "See the catalysts before they land.",
     body: "Live governance votes from Snapshot and exchange activity from Binance, alongside your own network upgrades, unlocks, and other catalysts, in one filterable calendar.",
-    src: "/assets/nexus/nexus-events.png",
-    width: 2110,
-    height: 1192,
+    src: "/assets/praxis/praxis-events.png",
+    width: 2100,
+    height: 1185,
     alt: "Praxis events calendar with category filters and upcoming entries like a token unlock and a governance vote.",
   },
 ] as const;
 
-const HOLD = 0.55;
+const HOLD = 0.6;
 
 function clamp(value: number, min: number, max: number) {
   return Math.min(max, Math.max(min, value));
@@ -100,7 +100,7 @@ export function ProductStory() {
   const trackRef = useRef<HTMLDivElement>(null);
 
   const { scrollYProgress } = useScroll({ target: trackRef, offset: ["start start", "end end"] });
-  const progress = useSpring(scrollYProgress, { stiffness: 220, damping: 32, mass: 0.4, restDelta: 0.0005 });
+  const progress = useSpring(scrollYProgress, { stiffness: 70, damping: 24, mass: 0.7, restDelta: 0.0005 });
   const continuousIndex = useTransform(progress, (value) => value * CHAPTERS.length);
 
   // CHAPTERS has a fixed length of 5, so these are unrolled rather than
@@ -147,7 +147,7 @@ export function ProductStory() {
             <div ref={trackRef} className="hidden lg:grid lg:grid-cols-2 lg:gap-16">
               <div className="relative">
                 <div className="sticky top-1/2 -translate-y-1/2">
-                  <div className="relative aspect-[2110/1192] overflow-hidden ">
+                  <div className="relative aspect-[2100/1185] overflow-hidden ">
                     {CHAPTERS.map((chapter, index) => (
                       <motion.div key={chapter.id} className="absolute inset-0" style={{ y: styles[index].y }}>
                         <Shot chapter={chapter} />
@@ -169,7 +169,7 @@ export function ProductStory() {
                   </div>
                 </div>
                 {CHAPTERS.map((chapter) => (
-                  <div key={chapter.id} className="h-[80vh]" aria-hidden />
+                  <div key={chapter.id} className="h-[95vh]" aria-hidden />
                 ))}
               </div>
             </div>

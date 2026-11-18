@@ -44,10 +44,10 @@ export function Hero() {
 
         <BrowserFrame className="mt-10">
           <Image
-            src="/assets/nexus/nexus-portfolio.png"
+            src="/assets/praxis/praxis-portfolio.png"
             alt="Praxis portfolio screen with a pound total, daily change, allocation chart, and holdings for ETH, SOL, and BTC."
-            width={2050}
-            height={1148}
+            width={2100}
+            height={1185}
             priority
             sizes="(min-width: 1152px) 1152px, 100vw"
             className="h-auto w-full"
