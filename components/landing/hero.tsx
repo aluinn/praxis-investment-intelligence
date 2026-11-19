@@ -11,10 +11,10 @@ const FACTS = [
 
 export function Hero() {
   return (
-    <section id="product" className="px-4 pb-16 pt-32 sm:px-6 sm:pt-40 lg:pb-24">
+    <section id="product" className="relative bg-[radial-gradient(ellipse_70%_45%_at_50%_0%,rgba(153,69,255,0.28),transparent_70%)] px-4 pb-16 pt-32 sm:px-6 sm:pt-40 lg:pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal y={24}><h1 className="max-w-4xl font-serif text-5xl leading-[1.02] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
-          From insight to <span className="text-muted">action.</span>
+          <span className="text-fade">From insight to</span> <span className="text-gradient">action.</span>
         </h1></Reveal>
         <p className="mt-8 max-w-xl text-base leading-7 text-muted sm:text-lg">
           Praxis is a research workspace for digital-asset investors. Holdings, market news, saved research and a decision journal, in one place.
@@ -22,7 +22,7 @@ export function Hero() {
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <TransitionLink
             href="/app/for-you"
-            className="inline-flex min-h-11 items-center justify-center rounded-sm bg-primary px-5 text-sm font-medium text-[#0a0a0b] hover:bg-primary-bright"
+            className="inline-flex min-h-11 items-center justify-center rounded-sm bg-primary px-5 text-sm font-medium text-white hover:bg-primary-bright"
           >
             Open Praxis
           </TransitionLink>

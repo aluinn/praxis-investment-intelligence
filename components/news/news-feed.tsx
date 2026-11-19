@@ -233,11 +233,11 @@ export function NewsFeed() {
               type="button"
               aria-pressed={active}
               onClick={() => setFilter(item)}
-              className="min-h-10 shrink-0 rounded-sm px-3 text-xs font-semibold tracking-wide"
+              className="min-h-10 shrink-0 rounded-md px-3 text-xs font-semibold tracking-wide transition-[box-shadow,filter] duration-200 hover:brightness-125"
               style={{
                 color: style.text,
                 background: style.bg,
-                boxShadow: active ? `0 0 0 1px ${style.text}, 0 0 18px ${style.bg}` : undefined,
+                boxShadow: active ? `inset 0 0 0 1px ${style.text}` : undefined,
               }}
             >
               {item}

@@ -81,7 +81,7 @@ export function JournalView() {
             setEditing(null);
             setOpen(true);
           }}
-          className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-[#0a0a0b] hover:bg-primary-bright"
+          className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
         >
           <Plus className="size-4" />
           New Entry

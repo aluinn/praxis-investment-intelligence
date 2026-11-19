@@ -67,22 +67,25 @@ export function InterestsPicker({
               disabled={disabled}
               onClick={() => toggle(asset.symbol)}
               className={cn(
-                "flex flex-col items-center gap-1.5 rounded-xl border px-2 py-3 text-center transition-colors",
-                isSelected ? "border-white/30" : "border-white/10",
-                disabled ? "opacity-40" : "hover:border-white/20",
+                "group relative flex flex-col items-center gap-2 rounded-[18px] border px-2 py-4 text-center transition-all duration-200",
+                isSelected
+                  ? "border-primary/70 bg-gradient-to-b from-primary/25 to-primary/5 shadow-[0_0_24px_-6px_rgba(153,69,255,0.7)]"
+                  : "border-white/10 bg-white/[0.02] hover:-translate-y-0.5 hover:border-primary/40 hover:bg-primary/10",
+                disabled ? "pointer-events-none opacity-35" : "",
               )}
-              style={{
-                background: isSelected ? `${asset.color}22` : "transparent",
-                boxShadow: isSelected ? `0 0 0 1px ${asset.color}` : undefined,
-              }}
             >
+              {isSelected ? (
+                <span className="absolute right-2 top-2 grid size-4 place-items-center rounded-full bg-gradient-to-br from-primary to-[#14f195] text-[10px] font-bold leading-none text-white">
+                  ✓
+                </span>
+              ) : null}
               <span
-                className="grid size-9 place-items-center rounded-sm text-[11px] font-semibold"
-                style={{ color: asset.color, background: `${asset.color}22` }}
+                className="grid size-11 place-items-center rounded-full text-[11px] font-semibold ring-1 ring-white/10"
+                style={{ color: asset.color, background: `linear-gradient(145deg, ${asset.color}33, ${asset.color}0d)` }}
               >
                 {asset.symbol.slice(0, 4)}
               </span>
-              <span className="text-xs text-muted">{asset.name}</span>
+              <span className={cn("text-xs", isSelected ? "text-foreground" : "text-muted")}>{asset.name}</span>
             </button>
           );
         })}

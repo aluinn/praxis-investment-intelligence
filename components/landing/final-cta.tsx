@@ -10,7 +10,7 @@ export function FinalCta() {
         </h2>
         <TransitionLink
           href="/app/for-you"
-          className="inline-flex min-h-11 items-center rounded-sm bg-primary px-6 text-sm font-medium text-[#0a0a0b] hover:bg-primary-bright"
+          className="inline-flex min-h-11 items-center rounded-sm bg-primary px-6 text-sm font-medium text-white hover:bg-primary-bright"
         >
           Open Praxis
         </TransitionLink>

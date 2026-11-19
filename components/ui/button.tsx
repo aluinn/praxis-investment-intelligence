@@ -5,7 +5,7 @@ import { cn } from "@/lib/cn";
 
 const variants = {
   primary:
-    "bg-primary text-[#0a0a0b] hover:bg-primary-bright",
+    "bg-primary text-white hover:bg-primary-bright",
   quiet: "bg-[#151517] text-foreground hover:bg-[#1c1c1f]",
   ghost: "bg-transparent text-muted hover:bg-white/5 hover:text-foreground",
   outline: "border border-white/10 bg-transparent text-foreground hover:bg-white/5",

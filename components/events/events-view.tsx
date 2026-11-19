@@ -132,7 +132,7 @@ export function EventsView() {
               setEditing(null);
               setDialogOpen(true);
             }}
-            className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-[#0a0a0b] hover:bg-primary-bright"
+            className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
           >
             <Plus className="size-4" />
             New Event
@@ -183,11 +183,11 @@ export function EventsView() {
               type="button"
               aria-pressed={active}
               onClick={() => setFilter(item)}
-              className="min-h-10 shrink-0 rounded-sm px-3 text-xs font-semibold tracking-wide"
+              className="min-h-10 shrink-0 rounded-md px-3 text-xs font-semibold tracking-wide transition-[box-shadow,filter] duration-200 hover:brightness-125"
               style={{
                 color: style.text,
                 background: style.bg,
-                boxShadow: active ? `0 0 0 1px ${style.text}, 0 0 18px ${style.bg}` : undefined,
+                boxShadow: active ? `inset 0 0 0 1px ${style.text}` : undefined,
               }}
             >
               {item}
@@ -256,7 +256,7 @@ export function EventsView() {
                   setEditing(null);
                   setDialogOpen(true);
                 }}
-                className="mt-5 inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-[#0a0a0b] hover:bg-primary-bright"
+                className="mt-5 inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
               >
                 <Plus className="size-4" />
                 New Event

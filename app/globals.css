@@ -1,20 +1,20 @@
 @import "tailwindcss";
 
 :root {
-  --background: #000000;
-  --panel: #0c0c0e;
-  --panel-hover: #151517;
-  --input: #111113;
+  --background: #050309;
+  --panel: #0d0914;
+  --panel-hover: #171025;
+  --input: #120c1c;
   --foreground: #ededee;
   --muted: #939394;
-  --primary: #ededee;
-  --primary-bright: #ffffff;
-  --accent: #ededee;
-  --teal: #ededee;
-  --positive: #6ad09d;
+  --primary: #9945ff;
+  --primary-bright: #b073ff;
+  --accent: #c5a0ff;
+  --teal: #14f195;
+  --positive: #14f195;
   --negative: #dd524c;
   --warning: #e89838;
-  --line: rgba(255,255,255,0.13);
+  --line: rgba(153,69,255,0.22);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
@@ -54,13 +54,13 @@ html:has(.nexus-intro) {
 
 body {
   min-height: 100%;
-  background: var(--background);
+  position: relative;
   color: var(--foreground);
   font-family: var(--font-sans);
 }
 
 ::selection {
-  background: rgba(237,237,238, 0.35);
+  background: rgba(153,69,255,0.45);
 }
 
 :focus-visible {
@@ -94,4 +94,112 @@ body {
 .font-serif {
   font-weight: 300;
   letter-spacing: -0.035em;
+}
+
+/* Gradient surfaces */
+.bg-primary {
+  background-image: linear-gradient(135deg, #9945ff 0%, #6f5cff 60%, #4f7bff 100%);
+}
+.bg-primary:hover {
+  background-image: linear-gradient(135deg, #b073ff 0%, #8a74ff 60%, #6f93ff 100%);
+}
+.bg-panel {
+  background-image: linear-gradient(160deg, rgba(153, 69, 255, 0.12), rgba(20, 241, 149, 0.03) 70%);
+}
+.text-fade {
+  background-image: linear-gradient(180deg, #ffffff 35%, #c5a0ff 120%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* ---------- Futuristic layer ---------- */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -25%;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    radial-gradient(34rem 26rem at 78% 8%, rgba(153, 69, 255, 0.28), transparent 65%),
+    radial-gradient(30rem 24rem at 8% 62%, rgba(20, 241, 149, 0.10), transparent 65%),
+    radial-gradient(26rem 22rem at 70% 90%, rgba(79, 123, 255, 0.12), transparent 65%);
+}
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(153, 69, 255, 0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(153, 69, 255, 0.07) 1px, transparent 1px);
+  background-size: 56px 56px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+  -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 0%, #000 20%, transparent 75%);
+}
+
+.bg-panel {
+  backdrop-filter: blur(12px);
+  transition: box-shadow 0.35s var(--ease-out), border-color 0.35s var(--ease-out), transform 0.35s var(--ease-out);
+}
+.bg-panel:hover {
+  border-color: rgba(153, 69, 255, 0.45);
+  box-shadow: 0 0 0 1px rgba(153, 69, 255, 0.25), 0 12px 48px -16px rgba(153, 69, 255, 0.55);
+}
+
+.bg-primary {
+  background-size: 220% 100%;
+  background-image: linear-gradient(110deg, #9945ff 0%, #6f5cff 35%, #4f7bff 60%, #9945ff 100%);
+  transition: background-position 0.6s var(--ease-out), box-shadow 0.3s var(--ease-out), filter 0.3s;
+}
+.bg-primary:hover {
+  background-image: linear-gradient(110deg, #9945ff 0%, #6f5cff 35%, #4f7bff 60%, #9945ff 100%);
+  background-position: 100% 0;
+  box-shadow: 0 0 28px -4px rgba(153, 69, 255, 0.75);
+  filter: brightness(1.1);
+}
+
+.text-gradient {
+  background-image: linear-gradient(100deg, #9945ff, #14f195, #4f7bff, #9945ff);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.praxis-mark {
+  filter: drop-shadow(0 0 8px rgba(153, 69, 255, 0.55));
+}
+
+@keyframes aurora {
+  from { transform: translate3d(-3%, -2%, 0) scale(1); }
+  to { transform: translate3d(3%, 3%, 0) scale(1.08); }
+}
+@keyframes sweep {
+  from { background-position: 0% 50%; }
+  to { background-position: 250% 50%; }
+}
+@keyframes node {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.55; transform: scale(1.5); }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+@keyframes ring {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(153, 69, 255, 0.0); }
+  50% { box-shadow: 0 0 0 6px rgba(153, 69, 255, 0.12); }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body::before { animation: aurora 22s ease-in-out infinite alternate; }
+  .text-gradient { animation: sweep 9s linear infinite; }
+  .praxis-node { transform-box: fill-box; transform-origin: center; animation: node 2.4s ease-in-out infinite; }
+  main article, main [role="group"] > button { animation: rise 0.6s var(--ease-out) both; }
+  main article:nth-child(2) { animation-delay: 0.06s; }
+  main article:nth-child(3) { animation-delay: 0.12s; }
+  main article:nth-child(4) { animation-delay: 0.18s; }
+  .bg-primary { animation: ring 3.2s ease-in-out infinite; }
 }
