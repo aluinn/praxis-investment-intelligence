@@ -40,7 +40,7 @@ export function CurrencyPicker({
               }}
               className={cn(
                 "flex min-h-14 w-full items-center justify-between rounded-xl border px-4 text-left",
-                active ? "border-primary/70 bg-[#13213b]" : "border-white/10 hover:bg-white/5",
+                active ? "border-primary/70 bg-[#0e0e10]" : "border-white/10 hover:bg-white/5",
               )}
             >
               <span className="flex items-center gap-3">

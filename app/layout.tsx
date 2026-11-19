@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Newsreader } from "next/font/google";
+import { Geist_Mono, Inter, Inter_Tight } from "next/font/google";
 import { AppTransitionProvider } from "@/components/transition/app-transition";
 import "./globals.css";
 
-const geistSans = Geist({
+const geistSans = Inter({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
 
-const serif = Newsreader({
+const serif = Inter_Tight({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "500"],
+  weight: ["300"],
 });
 
 const geistMono = Geist_Mono({

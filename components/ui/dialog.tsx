@@ -108,7 +108,7 @@ export function Dialog({
             aria-labelledby={titleId}
             aria-describedby={description ? descriptionId : undefined}
             className={cn(
-              "relative z-10 max-h-[min(92vh,860px)] w-full overflow-y-auto rounded-t-sm border border-white/10 bg-[#0d1730] p-5 sm:rounded-2xl sm:p-6",
+              "relative z-10 max-h-[min(92vh,860px)] w-full overflow-y-auto rounded-t-sm border border-white/10 bg-[#0a0a0b] p-5 sm:rounded-2xl sm:p-6",
               wide ? "max-w-lg" : "max-w-md",
             )}
             initial={reduce ? { opacity: 0 } : { opacity: 0, y: 28, scale: 0.98 }}

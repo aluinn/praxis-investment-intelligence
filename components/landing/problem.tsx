@@ -18,7 +18,7 @@ export function Problem() {
           <ul className="divide-y divide-white/10 border-b border-white/10">
             {PROBLEMS.map(([title, body], i) => (
               <Reveal as="li" key={title} delay={i * 0.07} className="grid gap-1 py-4 sm:grid-cols-[14rem_1fr] sm:gap-6">
-                <h3 className="text-sm font-medium text-teal">{title}</h3>
+                <h3 className="text-sm font-medium text-foreground">{title}</h3>
                 <p className="text-sm leading-6 text-muted">{body}</p>
               </Reveal>
             ))}

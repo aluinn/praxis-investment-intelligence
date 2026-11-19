@@ -26,7 +26,7 @@ const FILTERS = [
 const TYPE_STYLE: Record<JournalType, string> = {
   buy: "text-positive",
   sell: "text-negative",
-  note: "text-[#cfe9e6]",
+  note: "text-[#ededee]",
   idea: "text-warning",
 };
 
@@ -81,7 +81,7 @@ export function JournalView() {
             setEditing(null);
             setOpen(true);
           }}
-          className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-[#04161a] hover:bg-primary-bright"
+          className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-[#0a0a0b] hover:bg-primary-bright"
         >
           <Plus className="size-4" />
           New Entry
@@ -98,7 +98,7 @@ export function JournalView() {
             onClick={() => setFilter(item.id)}
             className={cn(
               "min-h-10 shrink-0 rounded-sm px-4 text-sm",
-              filter === item.id ? "bg-[#123a44] text-foreground" : "bg-[#14203a] text-muted",
+              filter === item.id ? "bg-[#1a1a1d] text-foreground" : "bg-[#111113] text-muted",
             )}
           >
             {item.label}
@@ -141,7 +141,7 @@ export function JournalView() {
                         className="rounded-sm px-2 py-0.5 text-xs font-semibold"
                         style={{
                           color: assetStyle?.text ?? "#e8edf5",
-                          background: assetStyle?.bg ?? "#13213b",
+                          background: assetStyle?.bg ?? "#0e0e10",
                         }}
                       >
                         {entry.asset}

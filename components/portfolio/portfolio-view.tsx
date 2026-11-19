@@ -196,7 +196,7 @@ export function PortfolioView() {
       </div>
 
       <div className="relative mt-5 flex flex-wrap gap-2">
-        <button type="button" className="min-h-10 rounded-sm bg-[#123a44] px-4 text-sm text-[#e6f2f0]" aria-current="true">
+        <button type="button" className="min-h-10 rounded-sm bg-[#1a1a1d] px-4 text-sm text-[#ededee]" aria-current="true">
           My Portfolio
         </button>
         <button
@@ -210,7 +210,7 @@ export function PortfolioView() {
         <AnimatePresence>
           {menuOpen ? (
             <motion.div
-              className="absolute left-0 top-12 z-10 w-64 rounded-xl border border-white/10 bg-[#12203a] p-3 text-sm text-muted shadow-xl"
+              className="absolute left-0 top-12 z-10 w-64 rounded-xl border border-white/10 bg-[#111113] p-3 text-sm text-muted shadow-xl"
               initial={reduce ? false : { opacity: 0, y: -6, scale: 0.97 }}
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={reduce ? { opacity: 0 } : { opacity: 0, y: -6, scale: 0.97 }}
@@ -222,7 +222,7 @@ export function PortfolioView() {
         </AnimatePresence>
       </div>
 
-      <section className="mt-4 rounded-2xl border border-[#1f5a60] bg-panel p-5">
+      <section className="mt-4 rounded-2xl border border-[#3a3a3d] bg-panel p-5">
         <div className="flex items-start justify-between gap-3">
           <p className="text-sm text-muted">{rows.length === 0 ? "Total Value" : `Total Value (${label})`}</p>
           <button
@@ -278,7 +278,7 @@ export function PortfolioView() {
             onClick={() => setRange(item)}
             className={cn(
               "min-h-10 shrink-0 rounded-sm px-3 text-sm",
-              range === item ? "bg-[#123a44] text-foreground ring-1 ring-primary/70" : "bg-[#14203a] text-muted",
+              range === item ? "bg-[#1a1a1d] text-foreground ring-1 ring-primary/70" : "bg-[#111113] text-muted",
             )}
           >
             {item}
@@ -305,7 +305,7 @@ export function PortfolioView() {
             setEditorKey((key) => key + 1);
             setEditorOpen(true);
           }}
-          className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-[#04161a] hover:bg-primary-bright"
+          className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-[#0a0a0b] hover:bg-primary-bright"
         >
           <Plus className="size-4" />
           Add Asset

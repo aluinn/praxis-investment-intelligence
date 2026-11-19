@@ -5,7 +5,7 @@ import { Reveal } from "@/components/landing/reveal";
 const CHAPTERS = [
   {
     id: "for-you",
-    tone: "text-primary-bright",
+    tone: "text-muted",
     kicker: "For You",
     heading: "News that knows what matters to you.",
     body: "Bring together stories from leading crypto publications, prioritised around the assets you follow. Scan concise excerpts, visit the original report or save an article for later.",
@@ -16,7 +16,7 @@ const CHAPTERS = [
   },
   {
     id: "portfolio",
-    tone: "text-teal",
+    tone: "text-muted",
     kicker: "Portfolio",
     heading: "Every holding. One clear view.",
     body: "Organise your digital assets in one portfolio, calculate their current value and understand allocation through a clear visual breakdown.",
@@ -27,7 +27,7 @@ const CHAPTERS = [
   },
   {
     id: "journal",
-    tone: "text-accent",
+    tone: "text-muted",
     kicker: "Trade Journal",
     heading: "Remember the thinking behind every move.",
     body: "Record buys, sells, notes and ideas alongside the reasoning that shaped each decision.",
@@ -38,7 +38,7 @@ const CHAPTERS = [
   },
   {
     id: "saved",
-    tone: "text-primary-bright",
+    tone: "text-muted",
     kicker: "Saved Research",
     heading: "Turn market noise into organised research.",
     body: "Save important stories and arrange them into collections by asset, investment thesis or market event.",
@@ -49,7 +49,7 @@ const CHAPTERS = [
   },
   {
     id: "events",
-    tone: "text-teal",
+    tone: "text-muted",
     kicker: "Events",
     heading: "See the catalysts before they land.",
     body: "Live governance votes from Snapshot and exchange activity from Binance, alongside your own network upgrades, unlocks, and other catalysts, in one filterable calendar.",

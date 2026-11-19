@@ -17,7 +17,7 @@ export function Workflow() {
         <ol className="mt-10 grid border-t border-white/10 md:grid-cols-4">
           {STEPS.map(([title, body], index) => (
             <Reveal as="li" key={title} delay={index * 0.1} className="border-b border-white/10 py-6 md:border-b-0 md:pr-6">
-              <p className="font-mono text-xs text-accent">0{index + 1}</p>
+              <p className="font-mono text-xs text-muted">0{index + 1}</p>
               <h3 className="mt-4 text-lg font-medium">{title}</h3>
               <p className="mt-2 text-sm leading-6 text-muted">{body}</p>
             </Reveal>

@@ -9,7 +9,7 @@ export function NotificationsView() {
       </p>
 
       <div className="mt-8 rounded-2xl border border-dashed border-white/15 px-4 py-14 text-center">
-        <span className="mx-auto grid size-12 place-items-center rounded-sm bg-[#13213b] text-primary">
+        <span className="mx-auto grid size-12 place-items-center rounded-sm bg-[#0e0e10] text-primary">
           <Bell className="size-5" aria-hidden />
         </span>
         <p className="mt-4 text-lg font-medium">You are up to date</p>

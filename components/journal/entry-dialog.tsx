@@ -10,7 +10,7 @@ import type { JournalEntry, JournalType } from "@/types";
 const TYPES: { id: JournalType; label: string; active: string }[] = [
   { id: "buy", label: "Buy", active: "border-positive text-positive" },
   { id: "sell", label: "Sell", active: "border-negative text-negative" },
-  { id: "note", label: "Note", active: "border-[#cfe9e6] text-[#cfe9e6]" },
+  { id: "note", label: "Note", active: "border-[#ededee] text-[#ededee]" },
   { id: "idea", label: "Idea", active: "border-warning text-warning" },
 ];
 

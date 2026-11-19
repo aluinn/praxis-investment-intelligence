@@ -399,7 +399,7 @@ function CollectionDetail({
                   href={article.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex min-h-11 items-center text-sm text-[#cfe9e6]"
+                  className="inline-flex min-h-11 items-center text-sm text-[#ededee]"
                 >
                   Open original
                 </a>
