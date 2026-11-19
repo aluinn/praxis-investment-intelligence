@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from "framer-motion";
+import { motion, useReducedMotion, useScroll, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 import { useRef } from "react";
 import { BrowserFrame } from "@/components/landing/browser-frame";
@@ -64,28 +64,9 @@ const CHAPTERS = [
   },
 ] as const;
 
-function clamp(value: number, min: number, max: number) {
-  return Math.min(max, Math.max(min, value));
-}
+type Chapter = (typeof CHAPTERS)[number];
 
-// Each chapter owns one slot of the scroll. It sits fully visible around the
-// middle of its slot, then eases out and the next eases in with a small
-// drift, so images never slide past each other and never overlap.
-const HOLD = 0.18;
-const FADE = 0.32;
-
-function useChapterStyle(continuousIndex: MotionValue<number>, index: number) {
-  const distance = (value: number) => value - (index + 0.5);
-  const opacity = useTransform(continuousIndex, (value) => {
-    const t = clamp((Math.abs(distance(value)) - HOLD) / FADE, 0, 1);
-    return 1 - t * t * (3 - 2 * t);
-  });
-  const y = useTransform(continuousIndex, (value) => `${clamp(distance(value), -0.6, 0.6) * 36}px`);
-  const scale = useTransform(continuousIndex, (value) => 1 - clamp(Math.abs(distance(value)) - HOLD, 0, 0.4) * 0.06);
-  return { opacity, y, scale };
-}
-
-function Shot({ chapter }: { chapter: (typeof CHAPTERS)[number] }) {
+function Shot({ chapter }: { chapter: Chapter }) {
   return (
     <BrowserFrame>
       <Image
@@ -93,94 +74,85 @@ function Shot({ chapter }: { chapter: (typeof CHAPTERS)[number] }) {
         alt={chapter.alt}
         width={chapter.width}
         height={chapter.height}
-        sizes="(min-width: 1024px) 560px, 100vw"
+        sizes="(min-width: 1024px) 960px, 100vw"
         className="h-auto w-full"
       />
     </BrowserFrame>
   );
 }
 
-export function ProductStory() {
-  const reduce = useReducedMotion();
-  const trackRef = useRef<HTMLDivElement>(null);
-
-  const { scrollYProgress } = useScroll({ target: trackRef, offset: ["start start", "end end"] });
-  const progress = useSpring(scrollYProgress, { stiffness: 60, damping: 22, mass: 0.8, restDelta: 0.0005 });
-  const continuousIndex = useTransform(progress, (value) => value * CHAPTERS.length);
-
-  // CHAPTERS has a fixed length of 5, so these are unrolled rather than
-  // called from inside a .map callback (hooks can't run inside callbacks).
-  const styles = [
-    useChapterStyle(continuousIndex, 0),
-    useChapterStyle(continuousIndex, 1),
-    useChapterStyle(continuousIndex, 2),
-    useChapterStyle(continuousIndex, 3),
-    useChapterStyle(continuousIndex, 4),
-  ];
+// One tall section per chapter. The scene inside is pinned for the length of
+// the section while the scroll position drives a slow fade in, a held moment,
+// and a fade out, with a gentle parallax on the image. Nothing slides past
+// anything else; the page just keeps scrolling normally.
+function PinnedChapter({ chapter }: { chapter: Chapter }) {
+  const ref = useRef<HTMLElement>(null);
+  const { scrollYProgress } = useScroll({ target: ref, offset: ["start start", "end end"] });
+  const p = useSpring(scrollYProgress, { stiffness: 90, damping: 28, mass: 0.5, restDelta: 0.0005 });
+  const fade = useTransform(p, [0, 0.22, 0.78, 1], [0, 1, 1, 0]);
+  const textY = useTransform(p, [0, 0.22, 0.78, 1], [40, 0, 0, -40]);
+  const imageY = useTransform(p, [0, 1], [70, -70]);
+  const imageScale = useTransform(p, [0, 0.5, 1], [0.96, 1, 1.03]);
 
   return (
-    <section id="features" className="px-4 py-8 sm:px-6" aria-labelledby="features-heading">
-      <div className="mx-auto max-w-6xl">
-        <h2 id="features-heading" className="sr-only">
-          Product features
-        </h2>
-
-        {reduce ? (
-          <div className="space-y-16">
-            {CHAPTERS.map((chapter) => (
-              <article key={chapter.id} className="space-y-5">
-                <p className={`font-mono text-xs uppercase tracking-wider ${chapter.tone}`}>{chapter.kicker}</p>
-                <h3 className="font-serif text-3xl leading-tight tracking-tight">{chapter.heading}</h3>
-                <p className="text-base leading-7 text-muted">{chapter.body}</p>
-                <Shot chapter={chapter} />
-              </article>
-            ))}
+    <section ref={ref} className="relative h-[240vh]" aria-labelledby={`chapter-${chapter.id}`}>
+      <div className="sticky top-0 flex h-screen items-center overflow-hidden">
+        <motion.div
+          className="absolute right-0 top-1/2 w-[min(960px,64vw)] -translate-y-1/2"
+          style={{ opacity: fade, y: imageY, scale: imageScale }}
+        >
+          <div className="[mask-image:linear-gradient(to_right,transparent,black_28%)]">
+            <Shot chapter={chapter} />
           </div>
-        ) : (
-          <>
-            <div className="space-y-16 lg:hidden">
-              {CHAPTERS.map((chapter) => (
-                <Reveal key={chapter.id} as="article" className="space-y-5">
-                  <p className={`font-mono text-xs uppercase tracking-wider ${chapter.tone}`}>{chapter.kicker}</p>
-                  <h3 className="font-serif text-3xl leading-tight tracking-tight">{chapter.heading}</h3>
-                  <p className="text-base leading-7 text-muted">{chapter.body}</p>
-                  <Shot chapter={chapter} />
-                </Reveal>
-              ))}
-            </div>
-
-            <div ref={trackRef} className="hidden lg:grid lg:grid-cols-2 lg:gap-16">
-              <div className="relative">
-                <div className="sticky top-1/2 -translate-y-1/2">
-                  <div className="relative aspect-[2100/1185] overflow-hidden ">
-                    {CHAPTERS.map((chapter, index) => (
-                      <motion.div key={chapter.id} className="absolute inset-0" style={styles[index]}>
-                        <Shot chapter={chapter} />
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-              </div>
-              <div className="relative">
-                <div className="sticky top-1/2 -translate-y-1/2">
-                  <div className="relative min-h-[260px] overflow-hidden">
-                    {CHAPTERS.map((chapter, index) => (
-                      <motion.div key={chapter.id} className="absolute inset-0" style={styles[index]}>
-                        <p className={`font-mono text-xs uppercase tracking-wider ${chapter.tone}`}>{chapter.kicker}</p>
-                        <h3 className="mt-3 font-serif text-4xl leading-tight tracking-tight">{chapter.heading}</h3>
-                        <p className="mt-4 max-w-md text-base leading-7 text-muted">{chapter.body}</p>
-                      </motion.div>
-                    ))}
-                  </div>
-                </div>
-                {CHAPTERS.map((chapter) => (
-                  <div key={chapter.id} className="h-[95vh]" aria-hidden />
-                ))}
-              </div>
-            </div>
-          </>
-        )}
+        </motion.div>
+        <motion.div className="relative z-10 max-w-lg" style={{ opacity: fade, y: textY }}>
+          <p className={`font-mono text-xs uppercase tracking-wider ${chapter.tone}`}>{chapter.kicker}</p>
+          <h3
+            id={`chapter-${chapter.id}`}
+            className="mt-4 font-serif text-5xl font-normal leading-[1.04] tracking-tight [text-shadow:0_2px_40px_rgba(8,10,18,0.9)]"
+          >
+            {chapter.heading}
+          </h3>
+          <p className="mt-5 max-w-md text-base leading-7 text-muted [text-shadow:0_2px_24px_rgba(8,10,18,0.95)]">
+            {chapter.body}
+          </p>
+        </motion.div>
       </div>
+    </section>
+  );
+}
+
+function StackedChapter({ chapter }: { chapter: Chapter }) {
+  return (
+    <Reveal as="article" className="space-y-5">
+      <p className={`font-mono text-xs uppercase tracking-wider ${chapter.tone}`}>{chapter.kicker}</p>
+      <h3 className="font-serif text-3xl leading-tight tracking-tight">{chapter.heading}</h3>
+      <p className="text-base leading-7 text-muted">{chapter.body}</p>
+      <Shot chapter={chapter} />
+    </Reveal>
+  );
+}
+
+export function ProductStory() {
+  const reduce = useReducedMotion();
+  return (
+    <section id="features" aria-labelledby="features-heading">
+      <h2 id="features-heading" className="sr-only">
+        Product features
+      </h2>
+      {/* Phones and reduced motion: a plain stacked list. */}
+      <div className={`mx-auto max-w-6xl space-y-16 px-4 py-8 sm:px-6 ${reduce ? "" : "lg:hidden"}`}>
+        {CHAPTERS.map((chapter) => (
+          <StackedChapter key={chapter.id} chapter={chapter} />
+        ))}
+      </div>
+      {reduce ? null : (
+        <div className="mx-auto hidden max-w-6xl px-6 lg:block">
+          {CHAPTERS.map((chapter) => (
+            <PinnedChapter key={chapter.id} chapter={chapter} />
+          ))}
+        </div>
+      )}
     </section>
   );
 }
