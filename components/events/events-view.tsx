@@ -132,7 +132,7 @@ export function EventsView() {
               setEditing(null);
               setDialogOpen(true);
             }}
-            className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
+            className="inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-[#04161a] hover:bg-primary-bright"
           >
             <Plus className="size-4" />
             New Event
@@ -141,7 +141,7 @@ export function EventsView() {
       </div>
 
       {cached ? (
-        <p className="mt-4 rounded-xl border border-white/10 bg-[#121624] px-3 py-2 text-sm text-muted" role="status">
+        <p className="mt-4 rounded-xl border border-white/10 bg-[#12203a] px-3 py-2 text-sm text-muted" role="status">
           Showing cached live events
         </p>
       ) : null}
@@ -256,7 +256,7 @@ export function EventsView() {
                   setEditing(null);
                   setDialogOpen(true);
                 }}
-                className="mt-5 inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
+                className="mt-5 inline-flex min-h-11 items-center gap-1 rounded-sm bg-primary px-4 text-sm font-medium text-[#04161a] hover:bg-primary-bright"
               >
                 <Plus className="size-4" />
                 New Event

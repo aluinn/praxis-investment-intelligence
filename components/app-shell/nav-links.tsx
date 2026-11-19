@@ -38,7 +38,7 @@ export function NavLinks({
             className={cn(
               "relative flex min-h-11 items-center gap-3 rounded-xl border px-3 text-sm transition-colors",
               active
-                ? "border-[#2b3350] text-foreground"
+                ? "border-[#1f5a60] text-foreground"
                 : "border-transparent text-[#9aa6bd] hover:bg-white/[0.04] hover:text-foreground",
             )}
           >
@@ -46,7 +46,7 @@ export function NavLinks({
               <motion.span
                 layoutId={`nav-active-bg-${scope}`}
                 aria-hidden
-                className="absolute inset-0 -z-10 rounded-xl bg-[#161b2c]"
+                className="absolute inset-0 -z-10 rounded-xl bg-[#13213b]"
                 transition={{ duration: 0.3, ease: EASE }}
               />
             ) : null}

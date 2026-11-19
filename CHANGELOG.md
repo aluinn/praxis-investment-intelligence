@@ -13,7 +13,7 @@ All notable changes are documented here. The format follows [Keep a Changelog](h
 
 ### Changed
 - Rebranded from Nexus to **Praxis Investment Intelligence** ("From Insight to Action."): new wordmark, P mark, favicon, app icons and Open Graph image.
-- Restyled the interface: flat, square-cornered, hairline-ruled layout with serif headlines, an indigo, teal and gold accent palette, and scroll-linked reveals on the landing page.
+- Restyled the interface: flat, square-cornered, hairline-ruled layout with serif headlines, a deep navy and teal palette, and a plain-scroll landing page with light fade-ins.
 - Retook product screenshots from the Praxis UI.
 - Browser storage keys keep their original `nexus.*` names so existing saved data is preserved.
 

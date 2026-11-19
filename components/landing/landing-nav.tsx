@@ -37,7 +37,7 @@ export function LandingNav() {
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-40 transition-colors duration-300",
-        scrolled || open ? "border-b border-white/10 bg-[#080a12]/92" : "border-b border-transparent bg-transparent",
+        scrolled || open ? "border-b border-white/10 bg-[#0a1224]/92" : "border-b border-transparent bg-transparent",
       )}
     >
       <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6">
@@ -54,7 +54,7 @@ export function LandingNav() {
         <div className="flex items-center gap-2">
           <TransitionLink
             href="/app/for-you"
-            className="inline-flex min-h-11 items-center rounded-sm bg-primary px-4 text-sm font-medium text-white hover:bg-primary-bright"
+            className="inline-flex min-h-11 items-center rounded-sm bg-primary px-4 text-sm font-medium text-[#04161a] hover:bg-primary-bright"
           >
             Open Praxis
           </TransitionLink>

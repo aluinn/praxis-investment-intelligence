@@ -43,7 +43,7 @@ export function IntroOverlay({
   // Background goes transparent the instant the reveal starts, from any
   // source, so the page underneath is visible as the word zooms through it.
   const background = useTransform(revealProgress, (value) =>
-    plan === "full" && value > 0 ? "transparent" : "#080a12",
+    plan === "full" && value > 0 ? "transparent" : "#0a1224",
   );
   const wordScale = useTransform(revealProgress, [0, 1], [1, reduce ? 1 : 2.6]);
   const wordOpacity = useTransform(revealProgress, [0, 1], [1, 0]);
@@ -75,7 +75,7 @@ export function IntroOverlay({
             transition={{ duration: reduce ? 0.3 : DURATION.introWord, ease: EASE }}
           >
             <motion.p
-              className="relative font-serif text-5xl font-normal text-[#dde3f1] sm:text-7xl"
+              className="relative font-serif text-5xl font-normal text-[#e6f2f0] sm:text-7xl"
               initial={{ letterSpacing: reduce ? "0.08em" : "0.35em" }}
               animate={{ letterSpacing: "0.08em" }}
               transition={{ duration: reduce ? 0.2 : DURATION.introWord, ease: EASE }}
@@ -83,7 +83,7 @@ export function IntroOverlay({
               PRAXIS
             </motion.p>
             <motion.p
-              className="relative mt-3 text-xs font-medium tracking-[0.3em] text-[#8b97b8] sm:text-sm"
+              className="relative mt-3 text-xs font-medium tracking-[0.3em] text-[#86a9c9] sm:text-sm"
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: reduce ? 0.2 : 0.6, delay: reduce ? 0 : 0.35, ease: EASE }}

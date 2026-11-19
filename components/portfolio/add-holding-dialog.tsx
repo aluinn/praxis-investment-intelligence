@@ -159,7 +159,7 @@ export function AddHoldingDialog({
                   }}
                   className={cn(
                     "grid aspect-square place-items-center rounded-sm text-[11px] font-semibold",
-                    selected ? "ring-2 ring-offset-2 ring-offset-[#0c101c]" : "",
+                    selected ? "ring-2 ring-offset-2 ring-offset-[#0d1730]" : "",
                   )}
                   style={{
                     color: item.color,
@@ -175,7 +175,7 @@ export function AddHoldingDialog({
           </div>
           <label className="mt-5 block text-sm">
             <span className="text-muted">Amount Paid ({currency})</span>
-            <span className="mt-2 flex min-h-12 items-center gap-2 rounded-xl border border-[#4c5ec0] bg-input px-3">
+            <span className="mt-2 flex min-h-12 items-center gap-2 rounded-xl border border-[#2a8f88] bg-input px-3">
               <span aria-hidden>{currencySymbol}</span>
               <input
                 value={paid}

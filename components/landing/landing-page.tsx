@@ -156,7 +156,7 @@ export function LandingPage() {
         <button
           type="button"
           onClick={skip}
-          className="fixed bottom-6 right-6 z-[60] min-h-11 rounded-sm border border-white/15 bg-[#121624] px-4 text-sm text-foreground"
+          className="fixed bottom-6 right-6 z-[60] min-h-11 rounded-sm border border-white/15 bg-[#12203a] px-4 text-sm text-foreground"
         >
           Skip intro
         </button>

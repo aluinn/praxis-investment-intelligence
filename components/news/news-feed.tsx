@@ -281,7 +281,7 @@ export function NewsFeed() {
         animate="show"
       >
         {cached ? (
-          <p className="rounded-xl border border-white/10 bg-[#121624] px-3 py-2 text-sm text-muted" role="status">
+          <p className="rounded-xl border border-white/10 bg-[#12203a] px-3 py-2 text-sm text-muted" role="status">
             Showing cached stories
           </p>
         ) : null}

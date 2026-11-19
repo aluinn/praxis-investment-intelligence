@@ -1,6 +1,5 @@
 import Image from "next/image";
 import { Reveal } from "@/components/landing/reveal";
-import { ScrollImage } from "@/components/landing/scroll-image";
 import { BrowserFrame } from "@/components/landing/browser-frame";
 import { TransitionLink } from "@/components/transition/transition-link";
 
@@ -15,7 +14,7 @@ export function Hero() {
     <section id="product" className="px-4 pb-16 pt-32 sm:px-6 sm:pt-40 lg:pb-24">
       <div className="mx-auto max-w-6xl">
         <Reveal y={24}><h1 className="max-w-4xl font-serif text-5xl leading-[1.02] tracking-tight text-foreground sm:text-7xl lg:text-8xl">
-          From insight to <span className="text-accent">action.</span>
+          From insight to <span className="text-primary-bright">action.</span>
         </h1></Reveal>
         <p className="mt-8 max-w-xl text-base leading-7 text-muted sm:text-lg">
           Praxis is a research workspace for digital-asset investors. Holdings, market news, saved research and a decision journal, in one place.
@@ -23,7 +22,7 @@ export function Hero() {
         <div className="mt-8 flex flex-col gap-3 sm:flex-row">
           <TransitionLink
             href="/app/for-you"
-            className="inline-flex min-h-11 items-center justify-center rounded-sm bg-primary px-5 text-sm font-medium text-white hover:bg-primary-bright"
+            className="inline-flex min-h-11 items-center justify-center rounded-sm bg-primary px-5 text-sm font-medium text-[#04161a] hover:bg-primary-bright"
           >
             Open Praxis
           </TransitionLink>
@@ -44,7 +43,7 @@ export function Hero() {
           ))}
         </dl></Reveal>
 
-        <ScrollImage className="mt-10"><BrowserFrame>
+        <Reveal className="mt-10"><BrowserFrame>
           <Image
             src="/assets/praxis/praxis-portfolio.png"
             alt="Praxis portfolio screen with a pound total, daily change, allocation chart, and holdings for ETH, SOL, and BTC."
@@ -54,7 +53,7 @@ export function Hero() {
             sizes="(min-width: 1152px) 1152px, 100vw"
             className="h-auto w-full"
           />
-        </BrowserFrame></ScrollImage>
+        </BrowserFrame></Reveal>
       </div>
     </section>
   );

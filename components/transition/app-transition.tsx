@@ -66,7 +66,7 @@ export function AppTransitionProvider({ children }: { children: React.ReactNode 
             transition={{ duration: COVER_MS / 1000, ease: EASE }}
           >
             <motion.p
-              className="text-xs font-medium tracking-[0.3em] text-[#8b97b8] sm:text-sm"
+              className="text-xs font-medium tracking-[0.3em] text-[#86a9c9] sm:text-sm"
               initial={{ opacity: 0, scale: 0.92 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.96 }}
